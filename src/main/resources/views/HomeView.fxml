@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
          <image>
-            <Image url="@flight_plane_sky_color_line_61872_1920x1080.jpg" />
+            <Image url="@./flight_plane_sky_color_line_61872_1920x1080.jpg" />
          </image>
       </ImageView>
       <Label layoutX="195.0" layoutY="32.0" text="Illinois Tech Airways">
@@ -50,7 +50,7 @@
             <Font name="Serif Italic" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="159.0" prefHeight="94.0" prefWidth="380.0" text="Illinois Tech Airwaysprovides services from chicago (ORD) to some of the popular destinations of United States such as California, Washington, NewYork, Boston, Houston, SanFransico, Texas, Austin" textAlignment="JUSTIFY" wrapText="true">
+      <Label layoutX="50.0" layoutY="159.0" prefHeight="94.0" prefWidth="380.0" text="Illinois Tech Airways provides services from chicago (ORD) to some of the popular destinations of United States such as California, Washington, NewYork, Boston, Houston, SanFransico, Texas, Austin" textAlignment="JUSTIFY" wrapText="true">
          <font>
             <Font name="Serif Regular" size="15.0" />
          </font>
