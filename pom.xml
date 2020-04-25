@@ -28,6 +28,11 @@
 			<artifactId>javafx-controls</artifactId>
 			<version>${openjfx.version}</version>
 		</dependency>
+		<dependency>
+    	<groupId>org.openjfx</groupId>
+    	<artifactId>javafx-fxml</artifactId>
+    	<version>${openjfx.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -38,7 +43,8 @@
 				<artifactId>javafx-maven-plugin</artifactId>
 				<version>0.0.4</version>
 				<configuration>
-					<mainClass>edu.iit.App</mainClass>
+					<!-- <mainClass>edu.iit.App</mainClass> -->
+					<mainClass>application.Main</mainClass>
 				</configuration>
 			</plugin>
 
