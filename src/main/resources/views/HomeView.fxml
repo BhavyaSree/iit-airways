@@ -20,7 +20,7 @@
             <Font name="Serif Bold" size="45.0" />
          </font>
       </Label>
-      <Label layoutX="517.0" layoutY="163.0" style="-fx-text-fill: red;" text="Already a memeber?" >
+      <Label layoutX="517.0" layoutY="163.0" style="-fx-text-fill: red;" text="Already a memeber?">
          <font>
             <Font name="Serif Regular" size="15.0" />
          </font>      
@@ -30,7 +30,7 @@
             <Font name="Serif Regular" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="517.0" layoutY="255.0" style="-fx-text-fill: red;" text="New member?" >
+      <Label layoutX="517.0" layoutY="255.0" style="-fx-text-fill: red;" text="New member?">
          <font>
             <Font name="Serif Regular" size="15.0" />
          </font>      
@@ -55,7 +55,7 @@
             <Font name="Serif Regular" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="285.0" text="-- Thank you for choosing us !!">
+      <Label layoutX="50.0" layoutY="285.0" text="-- Thank you for choosing us !!!">
          <font>
             <Font name="Serif Bold Italic" size="15.0" />
          </font>
