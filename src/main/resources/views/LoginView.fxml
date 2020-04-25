@@ -18,22 +18,40 @@
       </ImageView>
       <Label layoutX="50.0" layoutY="33.0" prefHeight="50.0" prefWidth="500.0" text="    Illinois Tech Airways">
          <font>
-            <Font name="System Bold" size="40.0" />
+            <Font name="Serif Bold" size="40.0" />
          </font>
       </Label>
+      
       <Label layoutX="164.0" layoutY="130.0" prefWidth="100.0" text="USERNAME">
          <font>
-            <Font size="18.0" />
+            <Font name="Serif Regular" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="290.0" layoutY="131.0" prefWidth="200.0" />
+      
+      <TextField layoutX="290.0" layoutY="131.0" prefWidth="200.0">
+        <font>
+            <Font name="Serif Regular" size="15.0" />
+         </font>      
+      </TextField>
+      
       <Label layoutX="164.0" layoutY="187.0" prefWidth="100.0" text="PASSWORD">
          <font>
-            <Font size="18.0" />
+            <Font name="Serif Regular" size="18.0" />
          </font>
       </Label>
+      
       <PasswordField layoutX="290.0" layoutY="188.0" prefWidth="200.0" />
-      <Button layoutX="214.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="LOGIN" />
-      <Button layoutX="390.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="CANCEL" />
+      <Button layoutX="214.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="LOGIN">
+         <font>
+            <Font name="Serif Regular" size="15.0" />
+         </font>      
+      </Button>
+      
+      <Button layoutX="390.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="CANCEL">
+         <font>
+            <Font name="Serif Regular" size="15.0" />
+         </font>      
+      </Button>
+      
    </children>
 </AnchorPane>
