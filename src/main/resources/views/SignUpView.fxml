@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddCustomerController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
          <image>
@@ -19,127 +19,83 @@
       </ImageView>
       <Label layoutX="52.0" layoutY="37.0" text="Please Enter Your details">
          <font>
-            <Font name="Serif Bold" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <Label layoutX="70.0" layoutY="115.0" text="Last Name">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtLname" layoutX="185.0" layoutY="115.0" prefWidth="200.0">
-         <font>
-            <Font name="Serif Regular" size="15.0" />
-         </font>
-      </TextField>
+      <TextField fx:id="txtLname" layoutX="185.0" layoutY="115.0" prefWidth="200.0" />
       <Label layoutX="70.0" layoutY="165.0" text="First Name">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtFname" layoutX="185.0" layoutY="165.0" prefWidth="200.0">
-         <font>
-            <Font name="Serif Regular" size="15.0" />
-         </font>
-      </TextField>
+      <TextField fx:id="txtFname" layoutX="185.0" layoutY="165.0" prefWidth="200.0" />
       <Label layoutX="70.0" layoutY="215.0" text="Date of Birth">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dob" layoutX="185.0" layoutY="215.0" prefWidth="200.0" showWeekNumbers="true" />
+      <DatePicker fx:id="txtDob" layoutX="185.0" layoutY="215.0" prefWidth="200.0" />
       <Label layoutX="70.0" layoutY="265.0" text="Phone No">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPhone" layoutX="185.0" layoutY="265.0" prefWidth="200.0">
-         <font>
-            <Font name="Serif Regular" size="15.0" />
-         </font>
-
-      </TextField>
-      
-      <TextField fx:id="txtEmail" layoutX="185.0" layoutY="315.0" prefWidth="200.0">
-         <font>
-            <Font name="Serif Regular" size="15.0" />
-         </font>
-
-      </TextField>
-      
+      <TextField fx:id="txtPhone" layoutX="185.0" layoutY="265.0" prefWidth="200.0" />
+      <TextField fx:id="txtEmail" layoutX="185.0" layoutY="315.0" prefWidth="200.0" />
       <Label layoutX="70.0" layoutY="315.0" text="Email">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="70.0" layoutY="365.0" text="Address">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAddress" layoutX="185.0" layoutY="365.0" prefWidth="200.0">
-         <font>
-            <Font name="Serif Regular" size="15.0" />
-         </font>
-      </TextField>
+      <TextField fx:id="txtAddress" layoutX="185.0" layoutY="365.0" prefWidth="200.0" />
       <Label layoutX="70.0" layoutY="415.0" text="City">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCity" layoutX="185.0" layoutY="415.0" prefWidth="200.0">
-         <font>
-            <Font name="Serif Regular" size="15.0" />
-         </font>
-      </TextField>
+      <TextField fx:id="txtCity" layoutX="185.0" layoutY="415.0" prefWidth="200.0" />
       <Label layoutX="70.0" layoutY="465.0" text="State">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtState" layoutX="185.0" layoutY="465.0" prefWidth="200.0">
-      <font>
-            <Font name="Serif Regular" size="15.0" />
-         </font>
-      </TextField>
+      <TextField fx:id="txtState" layoutX="185.0" layoutY="465.0" prefWidth="200.0" />
       <Label layoutX="70.0" layoutY="515.0" text="Zipcode">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtZipcode" layoutX="185.0" layoutY="515.0" prefWidth="200.0">
-         <font>
-            <Font name="Serif Regular" size="15.0" />
-         </font>
-      </TextField>
+      <TextField fx:id="txtZipcode" layoutX="185.0" layoutY="515.0" prefWidth="200.0" />
       <Label layoutX="470.0" layoutY="229.0" text="User Name">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUname" layoutX="573.0" layoutY="230.0" prefWidth="200.0">
-         <font>
-            <Font name="Serif Regular" size="15.0" />
-         </font>
-      </TextField>
+      <TextField fx:id="txtUsername" layoutX="573.0" layoutY="230.0" prefWidth="200.0" />
       <Label layoutX="470.0" layoutY="287.0" text="Password">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
-      <PasswordField fx:id="txtPassword" layoutX="573.0" layoutY="288.0" prefWidth="200.0">
-         <font>
-            <Font name="Serif Regular" size="15.0" />
-         </font>
-      </PasswordField>
+      <PasswordField fx:id="txtPassword" layoutX="573.0" layoutY="288.0" prefWidth="200.0" />
       <Button layoutX="559.0" layoutY="365.0" mnemonicParsing="false" onAction="#submit" prefWidth="100.0" text="SUBMIT">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Button>
       <Button layoutX="693.0" layoutY="44.0" mnemonicParsing="false" onAction="#home" prefWidth="80.0" style="-fx-background-color: Orange;" text="Home">
          <font>
-            <Font name="Serif Regular" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Button>
    </children>

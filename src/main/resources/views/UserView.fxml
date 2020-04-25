@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@flight_plane_sky_color_line_61872_1920x1080.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="202.0" layoutY="34.0" text="Welcome to Illinois Tech Airways User Account" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="415.0" layoutY="565.0" mnemonicParsing="false" onAction="#logout" prefWidth="100.0" text="LOGOUT" />
+      <Button layoutX="52.0" layoutY="113.0" mnemonicParsing="false" onAction="#viewprofile" prefHeight="25.0" prefWidth="120.0" text="VIEW PROFILE" />
+      <Button layoutX="52.0" layoutY="172.0" mnemonicParsing="false" onAction="#viewhistory" prefHeight="25.0" prefWidth="120.0" text="VIEW HISTORY" />
+      <Button layoutX="52.0" layoutY="233.0" mnemonicParsing="false" onAction="#bookticket" prefHeight="25.0" prefWidth="120.0" text="BOOK TICKET" />
+      <Pane fx:id="pane1" layoutX="216.0" layoutY="107.0" prefHeight="400.0" prefWidth="545.0" visible="false">
+         <children>
+            <Label layoutX="26.0" layoutY="19.0" text="First Name:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="302.0" layoutY="21.0" text="Last Name:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="63.0" text="Date of Birth:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="105.0" text="Email:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="148.0" text="Phone number:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="193.0" text="Address:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="243.0" text="City:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="303.0" layoutY="243.0" text="State:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="287.0" text="Zipcode:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtFname" layoutX="120.0" layoutY="19.0" />
+            <TextField fx:id="txtLname" layoutX="381.0" layoutY="19.0" />
+            <TextField fx:id="txtEmail" layoutX="121.0" layoutY="103.0" prefHeight="25.0" prefWidth="200.0" />
+            <TextField fx:id="txtPhone" layoutX="120.0" layoutY="146.0" />
+            <TextField fx:id="txtAdress" layoutX="120.0" layoutY="191.0" prefHeight="25.0" prefWidth="291.0" />
+            <TextField fx:id="txtCity" layoutX="120.0" layoutY="239.0" />
+            <TextField fx:id="txtState" layoutX="359.0" layoutY="240.0" />
+            <TextField fx:id="txtZipcode" layoutX="120.0" layoutY="285.0" />
+            <DatePicker fx:id="txtDob" layoutX="120.0" layoutY="60.0" />
+            <Button layoutX="221.0" layoutY="343.0" mnemonicParsing="false" onAction="#update" prefWidth="100.0" text="UPDATE" />
+         </children>
+      </Pane>
+      <Pane fx:id="pane2" layoutX="220.0" layoutY="106.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="437.0" prefWidth="537.0" visible="false">
+         <children>
+            <Label layoutX="209.0" layoutY="14.0" text="Travel History">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="pane3" layoutX="175.0" layoutY="79.0" prefHeight="482.0" prefWidth="615.0">
+         <children>
+            <Label layoutX="7.0" layoutY="11.0" text="From:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="154.0" layoutY="12.0" text="To:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox layoutX="7.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <DatePicker layoutX="305.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <Label layoutX="304.0" layoutY="12.0" text="Date:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="456.0" layoutY="12.0" text="Class:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox layoutX="155.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <ChoiceBox layoutX="459.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <Button layoutX="234.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" prefWidth="100.0" text="SEARCH" />
+            <Button layoutX="238.0" layoutY="446.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

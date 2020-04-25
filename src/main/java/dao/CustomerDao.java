@@ -25,15 +25,15 @@ public class CustomerDao extends DBConnect
 		{
 			PreparedStatement statement = connection.getConnection().prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
 			// Set the parameters to the query
-			statement.setString(1, customer.getTxtLname());
-			statement.setString(2, customer.getTxtFname());
-			statement.setDate(3, java.sql.Date.valueOf(customer.getDob()));
-			statement.setString(4, customer.getTxtEmail());
-			statement.setLong(5, customer.getTxtPhone());
-			statement.setString(6, customer.getTxtAddress());
-			statement.setString(7, customer.getTxtCity());
-			statement.setString(8, customer.getTxtState());
-			statement.setString(9, customer.getTxtZipcode());
+			statement.setString(1, customer.gettxtLname());
+			statement.setString(2, customer.gettxtFname());
+			statement.setDate(3, java.sql.Date.valueOf(customer.gettxtDob()));
+			statement.setString(4, customer.gettxtEmail());
+			statement.setLong(5, customer.gettxtPhone());
+			statement.setString(6, customer.gettxtAddress());
+			statement.setString(7, customer.gettxtCity());
+			statement.setString(8, customer.gettxtState());
+			statement.setString(9, customer.gettxtZipcode());
 			
 			// Execute the insert
 			statement.executeUpdate();
@@ -67,8 +67,8 @@ public class CustomerDao extends DBConnect
 			{
 				PreparedStatement statement1 = connection.getConnection().prepareStatement(sql3, Statement.RETURN_GENERATED_KEYS);
 				// Set the parameters to the query
-				statement1.setString(1, user.getTxtUname());
-				statement1.setString(2, user.getTxtPassword());
+				statement1.setString(1, user.gettxtUsername());
+				statement1.setString(2, user.gettxtPassword());
 				statement1.setInt(3, 0);
 				if(rs.next())
 				statement1.setInt(4, rs.getInt(1));
@@ -82,13 +82,13 @@ public class CustomerDao extends DBConnect
 			catch (SQLException e) 
 			{
 				user = null;
-				System.out.println("Error while adding new user: " + e);
+				System.out.println("Error while adding new user: " + e.getMessage());
 			}
 		}
 		
 		catch (SQLException e)
 		{
-				System.out.println("Error in fectching the customer Id" + e);
+				System.out.println("Error in fectching the customer Id" + e.getMessage());
 		}
 		
 	}
