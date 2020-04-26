@@ -84,6 +84,11 @@
             <TextField fx:id="txtZipcode" layoutX="120.0" layoutY="285.0" />
             <DatePicker fx:id="txtDob" layoutX="120.0" layoutY="60.0" />
             <Button layoutX="221.0" layoutY="343.0" mnemonicParsing="false" onAction="#update" prefWidth="100.0" text="UPDATE" />
+            <Label fx:id="lbl" layoutX="180.0" layoutY="400.0" style="-fx-text-fill: orange;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane fx:id="pane2" layoutX="220.0" layoutY="106.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="437.0" prefWidth="537.0" visible="false">

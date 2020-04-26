@@ -1,11 +1,12 @@
 package controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
 import application.Main;
 import dao.DBConnect;
-import dao.ViewCustomerDao;
+import dao.CustomerViewDao;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import models.Customer;
@@ -46,6 +48,8 @@ public class UserController extends DBConnect
 	private TextField txtZipcode;
 	@FXML
 	private DatePicker txtDob; 
+	@FXML
+	private Label lbl;
 	
 	static Customer c = new Customer();
 	static String user_name = c.gettxtUsername();
@@ -61,7 +65,7 @@ public class UserController extends DBConnect
 		System.out.println(user_name);
 		
 		// Create a DAO instance of the model
-		ViewCustomerDao customerDao = new ViewCustomerDao();
+		CustomerViewDao customerDao = new CustomerViewDao();
 		ArrayList<Customer> arrayList = customerDao.getCustomer(user_name);
 		
 		for (Customer customer : arrayList) 
@@ -126,17 +130,58 @@ public class UserController extends DBConnect
 	}
 	
 	public void search() {}
-	public void update() {}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public void update() 
+	{
+		// Extract the data from text fields
+		
+		// Validate the data
+		String LNAME = this.txtLname.getText();
+		if (LNAME == null || LNAME.trim().equals("")) {
+			return;
+		}
+
+		String FNAME = this.txtFname.getText();
+		if (FNAME == null || FNAME.trim().equals("")) {
+			return;
+		}
+
+		LocalDate DOB = this.txtDob.getValue();
+		if (DOB == null) {
+			return;
+		}
+
+		String EMAIL = this.txtEmail.getText();
+		if (EMAIL == null || EMAIL.trim().equals("")) {
+			return;
+		}
+		
+		String PHONE = this.txtPhone.getText();
+		String ADDRESS = this.txtAdress.getText();
+		String CITY = this.txtCity.getText();
+		String STATE = this.txtState.getText();
+		String ZIPCODE = this.txtZipcode.getText();	
+		
+		// Create a Customer object to set the values
+		Customer customer = new Customer();
+		
+		customer.settxtLname(LNAME);
+		customer.settxtFname(FNAME);
+		customer.settxtDob(DOB);
+		customer.settxtEmail(EMAIL);
+		customer.settxtPhone(Long.parseLong(PHONE));
+		customer.settxtAddress(ADDRESS);
+		customer.settxtCity(CITY);
+		customer.settxtState(STATE);
+		customer.settxtZipcode(ZIPCODE);
+		
+		// Create data access instance for customerView object
+		CustomerViewDao c1 = new CustomerViewDao();
+		c1.update(user_name, customer);
+		
+		lbl.setText("Successfully Updated the details !");
+		
+	}
 	
 	public void book() 
 	{

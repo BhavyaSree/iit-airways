@@ -76,29 +76,29 @@ public class SignUpController {
 		}
 
 		String PHONE = this.txtPhone.getText();
-		if (PHONE == null || PHONE.trim().equals("")) {
-			return;
-		}
+		//if (PHONE == null || PHONE.trim().equals("")) {
+		//	return;
+		//}
 
 		String ADDRESS = this.txtAddress.getText();
-		if (ADDRESS == null || ADDRESS.trim().equals("")) {
-			return;
-		}
+		//if (ADDRESS == null || ADDRESS.trim().equals("")) {
+		//	return;
+		//}
 
 		String CITY = this.txtCity.getText();
-		if (CITY == null || CITY.trim().equals("")) {
-			return;
-		}
+		//if (CITY == null || CITY.trim().equals("")) {
+		//	return;
+		//}
 
 		String STATE = this.txtState.getText();
-		if (STATE == null || STATE.trim().equals("")) {
-			return;
-		}
+		//if (STATE == null || STATE.trim().equals("")) {
+		//	return;
+		//}
 
 		String ZIPCODE = this.txtZipcode.getText();
-		if (ZIPCODE == null || ZIPCODE.trim().equals("")) {
-			return;
-		}
+		//if (ZIPCODE == null || ZIPCODE.trim().equals("")) {
+		//	return;
+		//}
 
 		String USERNAME = this.txtUsername.getText();
 		if (USERNAME == null || USERNAME.trim().equals("")) {
