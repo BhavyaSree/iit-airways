@@ -6,6 +6,7 @@ public class Customer
 {
 
 	// instance fields
+	private String txtUsername;
 		private String txtLname;
 		private String txtFname;
 		private LocalDate txtDob;
@@ -18,6 +19,22 @@ public class Customer
 		
 	//Getters and Setters for the fields
 		
+		/**
+		 * @return the txtUname
+		 */
+		public String gettxtUsername() 
+		{
+			return txtUsername;
+		}
+		
+		/**
+		 * @param txtUname the txtUname to set
+		 */
+		public void settxtUsername(String txtUsername) 
+		{
+			this.txtUsername = txtUsername;
+		}
+
 		/**
 		 * @return the txtLname
 		 */
