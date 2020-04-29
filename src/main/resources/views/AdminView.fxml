@@ -41,7 +41,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="7.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <ChoiceBox fx:id="From" layoutX="7.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
             <DatePicker layoutX="304.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
             <Label layoutX="303.0" layoutY="12.0" text="Date:">
                <font>
@@ -53,8 +53,8 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="154.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
-            <ChoiceBox layoutX="451.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <ChoiceBox fx:id="To" layoutX="154.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <ChoiceBox fx:id="Class" layoutX="451.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
             <Button layoutX="234.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" prefWidth="100.0" text="SEARCH" />
             <Button layoutX="240.0" layoutY="438.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
          </children>
@@ -106,15 +106,15 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="txtFname" layoutX="120.0" layoutY="19.0" />
-            <TextField fx:id="txtLname" layoutX="381.0" layoutY="19.0" />
-            <TextField fx:id="txtEmail" layoutX="121.0" layoutY="103.0" prefHeight="25.0" prefWidth="200.0" />
-            <TextField fx:id="txtPhone" layoutX="120.0" layoutY="146.0" />
-            <TextField fx:id="txtAdress" layoutX="120.0" layoutY="191.0" prefHeight="25.0" prefWidth="291.0" />
-            <TextField fx:id="txtCity" layoutX="120.0" layoutY="239.0" />
-            <TextField fx:id="txtState" layoutX="378.0" layoutY="240.0" />
-            <TextField fx:id="txtZipcode" layoutX="120.0" layoutY="285.0" />
-            <DatePicker fx:id="txtDob" layoutX="120.0" layoutY="60.0" />
+            <TextField fx:id="atxtFname" layoutX="120.0" layoutY="19.0" />
+            <TextField fx:id="atxtLname" layoutX="381.0" layoutY="19.0" />
+            <TextField fx:id="atxtEmail" layoutX="121.0" layoutY="103.0" prefHeight="25.0" prefWidth="200.0" />
+            <TextField fx:id="atxtPhone" layoutX="120.0" layoutY="146.0" />
+            <TextField fx:id="atxtAddress" layoutX="120.0" layoutY="191.0" prefHeight="25.0" prefWidth="291.0" />
+            <TextField fx:id="atxtCity" layoutX="120.0" layoutY="239.0" />
+            <TextField fx:id="atxtState" layoutX="378.0" layoutY="240.0" />
+            <TextField fx:id="atxtZipcode" layoutX="120.0" layoutY="285.0" />
+            <DatePicker fx:id="atxtDob" layoutX="120.0" layoutY="60.0" />
             <Button layoutX="221.0" layoutY="343.0" mnemonicParsing="false" onAction="#update" prefWidth="100.0" text="UPDATE" />
          </children>
       </Pane>
@@ -169,18 +169,18 @@
             <TextField fx:id="txtLname" layoutX="381.0" layoutY="19.0" />
             <TextField fx:id="txtEmail" layoutX="121.0" layoutY="103.0" prefHeight="25.0" prefWidth="200.0" />
             <TextField fx:id="txtPhone" layoutX="120.0" layoutY="146.0" />
-            <TextField fx:id="txtAdress" layoutX="120.0" layoutY="191.0" prefHeight="25.0" prefWidth="291.0" />
+            <TextField fx:id="txtAddress" layoutX="120.0" layoutY="191.0" prefHeight="25.0" prefWidth="291.0" />
             <TextField fx:id="txtCity" layoutX="120.0" layoutY="233.0" />
             <TextField fx:id="txtState" layoutX="378.0" layoutY="234.0" />
             <TextField fx:id="txtZipcode" layoutX="120.0" layoutY="277.0" />
             <DatePicker fx:id="txtDob" layoutX="120.0" layoutY="60.0" />
-            <Button layoutX="194.0" layoutY="413.0" mnemonicParsing="false" onAction="#update" prefWidth="100.0" text="CREATE" />
+            <Button layoutX="194.0" layoutY="413.0" mnemonicParsing="false" onAction="#create" prefWidth="100.0" text="CREATE" />
             <Label layoutX="295.0" layoutY="281.0" text="User Type:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="377.0" layoutY="279.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="UserType" layoutX="377.0" layoutY="279.0" prefWidth="150.0" />
             <Label layoutX="26.0" layoutY="368.0" text="Password:">
                <font>
                   <Font size="14.0" />

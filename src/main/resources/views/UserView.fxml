@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,12 +15,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
+      <ImageView fitHeight="600.0" fitWidth="813.0" layoutX="-7.0" pickOnBounds="true">
          <image>
             <Image url="@flight_plane_sky_color_line_61872_1920x1080.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="202.0" layoutY="34.0" text="Welcome to Illinois Tech Airways User Account" textAlignment="CENTER">
+      <Label layoutX="205.0" layoutY="31.0" text="Welcome to Illinois Tech Airways User Account" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -78,20 +80,15 @@
             <TextField fx:id="txtLname" layoutX="381.0" layoutY="19.0" />
             <TextField fx:id="txtEmail" layoutX="121.0" layoutY="103.0" prefHeight="25.0" prefWidth="200.0" />
             <TextField fx:id="txtPhone" layoutX="120.0" layoutY="146.0" />
-            <TextField fx:id="txtAdress" layoutX="120.0" layoutY="191.0" prefHeight="25.0" prefWidth="291.0" />
+            <TextField fx:id="txtAddress" layoutX="120.0" layoutY="191.0" prefHeight="25.0" prefWidth="291.0" />
             <TextField fx:id="txtCity" layoutX="120.0" layoutY="239.0" />
             <TextField fx:id="txtState" layoutX="359.0" layoutY="240.0" />
             <TextField fx:id="txtZipcode" layoutX="120.0" layoutY="285.0" />
             <DatePicker fx:id="txtDob" layoutX="120.0" layoutY="60.0" />
             <Button layoutX="221.0" layoutY="343.0" mnemonicParsing="false" onAction="#update" prefWidth="100.0" text="UPDATE" />
-            <Label fx:id="lbl" layoutX="180.0" layoutY="400.0" style="-fx-text-fill: orange;">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
          </children>
       </Pane>
-      <Pane fx:id="pane2" layoutX="220.0" layoutY="106.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="437.0" prefWidth="537.0" visible="false">
+      <Pane fx:id="pane2" layoutX="220.0" layoutY="85.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="458.0" prefWidth="537.0" visible="false">
          <children>
             <Label layoutX="209.0" layoutY="14.0" text="Travel History">
                <font>
@@ -100,34 +97,49 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="pane3" layoutX="175.0" layoutY="79.0" prefHeight="482.0" prefWidth="615.0">
+      <Pane layoutX="182.0" layoutY="90.0">
          <children>
-            <Label layoutX="7.0" layoutY="11.0" text="From:">
+            <Label text="From:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="154.0" layoutY="12.0" text="To:">
+            <Label layoutX="147.0" layoutY="1.0" text="To:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="7.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
-            <DatePicker layoutX="305.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
-            <Label layoutX="304.0" layoutY="12.0" text="Date:">
+            <ChoiceBox fx:id="From" layoutY="23.0" prefHeight="25.0" prefWidth="126.0" />
+            <DatePicker fx:id="Date" layoutX="298.0" layoutY="23.0" prefHeight="25.0" prefWidth="126.0" />
+            <Label layoutX="297.0" layoutY="1.0" text="Date:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="456.0" layoutY="12.0" text="Class:">
+            <Label layoutX="449.0" layoutY="1.0" text="Class:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="155.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
-            <ChoiceBox layoutX="459.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
-            <Button layoutX="234.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" prefWidth="100.0" text="SEARCH" />
-            <Button layoutX="238.0" layoutY="446.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
+            <ChoiceBox fx:id="To" layoutX="148.0" layoutY="23.0" prefHeight="25.0" prefWidth="126.0" />
+            <ChoiceBox fx:id="Class" layoutX="452.0" layoutY="23.0" prefHeight="25.0" prefWidth="126.0" />
+            <Button layoutX="227.0" layoutY="59.0" mnemonicParsing="false" onAction="#search" prefWidth="100.0" text="SEARCH" />
+            <Button layoutX="231.0" layoutY="435.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
+            <Pane layoutX="8.0" layoutY="94.0" prefHeight="333.0" prefWidth="562.0">
+               <children>
+                  <TableView layoutX="-9.0" layoutY="7.0" prefHeight="325.0" prefWidth="578.0">
+                    <columns>
+                      <TableColumn fx:id="selectId" prefWidth="41.0" text="Select" />
+                      <TableColumn fx:id="fromId" prefWidth="109.0" text="From" />
+                        <TableColumn fx:id="toId" prefWidth="97.0" text="To" />
+                        <TableColumn fx:id="dateId" prefWidth="76.0" text="Date" />
+                        <TableColumn fx:id="timeId" prefWidth="76.0" text="Time" />
+                        <TableColumn fx:id="classId" prefWidth="103.0" text="Class" />
+                        <TableColumn fx:id="classPrice" prefWidth="75.0" text="Price" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
