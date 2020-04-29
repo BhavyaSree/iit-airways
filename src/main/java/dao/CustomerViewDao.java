@@ -48,8 +48,10 @@ public class CustomerViewDao extends DBConnect
 				customer.add(c1);
 				
 				System.out.println("Sucessfully fetched customer data from database");
+	
 			}
-			return customer;		
+			return customer;	
+			
 		}
 		catch (SQLException e) 
 		{

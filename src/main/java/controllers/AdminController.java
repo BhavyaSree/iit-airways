@@ -1,16 +1,21 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import application.Main;
+import dao.CustomerViewDao;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import models.Customer;
 
 
 
@@ -24,8 +29,27 @@ public class AdminController {
 	private Pane pane3;
 	@FXML
 	private Pane pane4;
+	@FXML
+	private TextField txtFname;
+	@FXML
+	private TextField txtLname;
+	@FXML
+	private TextField txtEmail;
+	@FXML
+	private TextField txtPhone;
+	@FXML
+	private TextField txtAdress;
+	@FXML
+	private TextField txtCity;
+	@FXML
+	private TextField txtState;
+	@FXML
+	private TextField txtZipcode;
+	@FXML
+	private DatePicker txtDob; 
 
-	static String user_name;
+	static Customer c = new Customer();
+	static String user_name = c.gettxtUsername();
 
 	public void logout() {
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -68,11 +92,37 @@ public class AdminController {
 		pane1.setVisible(false);
 	}
 	
-	public void viewprofile() {
+	public void viewprofile() 
+	{
 		pane4.setVisible(false);
 		pane3.setVisible(false);
 		pane2.setVisible(false);
 		pane1.setVisible(true);
+		
+		// Create a DAO instance of the model
+		CustomerViewDao customerDao = new CustomerViewDao();
+		ArrayList<Customer> arrayList = customerDao.getCustomer(user_name);
+		
+		for (Customer customer : arrayList) 
+		{
+			System.out.println("setting the values");
+			System.out.println(customer.gettxtLname());
+			System.out.println(customer.gettxtFname());
+			txtLname.setText(customer.gettxtLname());
+			
+			//txtLname.setText(customer.gettxtLname());
+			txtFname.setText(customer.gettxtFname());
+			txtDob.setValue(customer.gettxtDob());
+			txtEmail.setText(customer.gettxtEmail());
+			txtPhone.setText(Long.toString(customer.gettxtPhone()));
+			txtAdress.setText(customer.gettxtAddress());
+			txtCity.setText(customer.gettxtCity());
+			txtState.setText(customer.gettxtState());
+			txtZipcode.setText(customer.gettxtZipcode());
+
+		}		
+		
+		
 	}
 	
 	public void viewhistory() {
