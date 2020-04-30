@@ -22,7 +22,7 @@ public class HistoryDao extends DBConnect
 		ResultSet rs = null;
 		
 		String Sql = "Select FROMDEST, TODEST, TRAVELDATE, TRAVELTIME, CLASS from ars_ticketdetails where UNAME = "
-						+ "'" + user_name +"'  ORDER BY TRAVELDATE, TRAVELTIME DESC" ;  
+						+ "'" + user_name +"'  ORDER BY TRAVELDATE, TRAVELTIME " ;  
 		
 		try
 		{

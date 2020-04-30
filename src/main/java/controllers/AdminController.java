@@ -309,6 +309,23 @@ public class AdminController implements Initializable {
 		}
 	}
 	
+	
+	@FXML
+	public void click2(MouseEvent event)
+	{
+	    if (event.getClickCount() == 2) //Checking double click
+	    {
+	    	//bookBtn.setDisable(false);
+	    	System.out.println("Fetching data from the view");
+	        System.out.println(tblHistory.getSelectionModel().getSelectedItem().getFromId());
+	        System.out.println(tblHistory.getSelectionModel().getSelectedItem().getToId());
+	        System.out.println(tblHistory.getSelectionModel().getSelectedItem().getDateId());
+	        System.out.println(tblHistory.getSelectionModel().getSelectedItem().getTimeId());
+	        System.out.println(tblHistory.getSelectionModel().getSelectedItem().getClassId());
+
+	    }
+	}
+	
 	public void delete()
 	{
 		pane4.setVisible(false);
@@ -527,7 +544,7 @@ public class AdminController implements Initializable {
 	}
 	
 	@FXML
-	public void click(MouseEvent event)
+	public void click1(MouseEvent event)
 	{
 	    if (event.getClickCount() == 2) //Checking double click
 	    {
@@ -538,6 +555,7 @@ public class AdminController implements Initializable {
 	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getDateId());
 	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getTimeId());
 	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getClassId());
+	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getPriceId());
 
 	    }
 	}

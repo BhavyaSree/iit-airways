@@ -20,17 +20,16 @@ public class AdminHistoryDao extends DBConnect
 		
 		ResultSet rs = null;
 		
-		String Sql = "Select FROMDEST, TODEST, TRAVELDATE, TRAVELTIME, CLASS from ars_ticketdetails order by TRAVELDATE DESC;" ;  
+		String Sql = "Select FROMDEST, TODEST, TRAVELDATE, TRAVELTIME, CLASS from ars_ticketdetails order by TRAVELDATE, TRAVELTIME;" ;  
 		
 		try
 		{
 			Statement stmt = connection.getConnection().createStatement();
 			
-			System.out.println(Sql);
 			
 			rs = stmt.executeQuery(Sql);						
 			
-			if(rs.next())
+			while(rs.next())
 			{		
 				HistoryModel H1 = new HistoryModel();
 
@@ -42,9 +41,9 @@ public class AdminHistoryDao extends DBConnect
 				
 				history.add(H1);
 				
-				System.out.println("Sucessfully fetched ticket history from database");
 			}
 
+			System.out.println("Sucessfully fetched ticket history from database");
 		
 		}
 		catch (SQLException e)

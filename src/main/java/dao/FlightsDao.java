@@ -25,7 +25,7 @@ public class FlightsDao extends DBConnect
 		
 		
 		String Sql = "Select FROM_DES, TO_DES, DATE, TIME, CLASS, PRICE  from ars_flights where FROM_DES = ? AND TO_DES = ? "
-				    + "AND DATE= ? AND CLASS = ? AND AVAILABLE = 'YES' ORDER BY TIME" ;
+				    + "AND DATE= ? AND CLASS = ? AND AVAILABLE = 'YES' ORDER BY DATE, TIME" ;
 				
 		try
 		{
@@ -40,7 +40,7 @@ public class FlightsDao extends DBConnect
 					
 			rs = statement.executeQuery();
 			
-			if(rs.next())
+			while(rs.next())
 			{			
 				System.out.println("Started to fetch the flight details");
 				FlightsModel F1 = new FlightsModel();
