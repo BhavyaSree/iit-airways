@@ -1,32 +1,44 @@
 package controllers;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicLong;
+
 import application.Main;
 import dao.AdminDao;
+import dao.AdminHistoryDao;
 import dao.CustomerDao;
 import dao.CustomerViewDao;
-import javafx.collections.FXCollections;
+import dao.FlightsDao;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.application.Platform;
 import javafx.collections.*;
 import models.Admin;
 import models.Customer;
+import models.FlightsModel;
+import models.HistoryModel;
 import models.User;
 
 
-public class AdminController {
+public class AdminController implements Initializable {
 
 	@FXML
 	private Pane pane1;
@@ -36,6 +48,8 @@ public class AdminController {
 	private Pane pane3;
 	@FXML
 	private Pane pane4;
+	@FXML
+	private Pane pane5;
 	@FXML
 	private TextField txtFname;
 	@FXML
@@ -88,33 +102,106 @@ public class AdminController {
 	private ChoiceBox<String> To;
 	@FXML
 	private ChoiceBox<String> Class;
-	
-	//@FXML
-	//private Label lblBookingId;
 	@FXML
-	private Label lblFname;
+	private DatePicker Date;
 	@FXML
-	private Label lblLname;
+	private TableView<FlightsModel> tblFlights;
 	@FXML
-	private Label lblEmail;
+	private TableColumn<FlightsModel, String> fromId;
 	@FXML
-	private Label lblPhone;
+	private TableColumn<FlightsModel, String> toId;
 	@FXML
-	private Label lblFrom;
+	private TableColumn<FlightsModel, String> dateId;
 	@FXML
-	private Label lblTo;
+	private TableColumn<FlightsModel, String> timeId;
 	@FXML
-	private Label lblDate;
+	private TableColumn<FlightsModel, String> classId;
 	@FXML
-	private Label lblTime;
+	private TableColumn<FlightsModel, String> priceId;
 	@FXML
-	private Label lblClass;
+	private TableView<HistoryModel> tblHistory;
 	@FXML
-	private Label lblStatus;
+	private TableColumn<HistoryModel, String> FromId;
+	@FXML
+	private TableColumn<HistoryModel, String> ToId;
+	@FXML
+	private TableColumn<HistoryModel, String> DateId;
+	@FXML
+	private TableColumn<HistoryModel, String> TimeId;
+	@FXML
+	private TableColumn<HistoryModel, String> ClassId;
+
 	
 
 	static Customer c = new Customer();
 	static String user_name = c.gettxtUsername();
+	
+	
+	final ObservableList<String> FromL = FXCollections.observableArrayList(
+			"Chicago", "New York", "Seattle", "Orlando", "Dallas", "California" );
+	final ObservableList<String> ToL = FXCollections.observableArrayList(
+			"Chicago", "New York", "Seattle", "Orlando", "Dallas", "California" );
+	final ObservableList<String> ClassL = FXCollections.observableArrayList(
+			"Economy", "Business", "First Class" );
+	
+	public void initialize(URL location, ResourceBundle resources)
+	
+	{
+		
+		//System.out.println(user_name);
+		// Code for tblFlights table view
+		fromId.setCellValueFactory(new PropertyValueFactory<FlightsModel, String>("fromId"));
+		toId.setCellValueFactory(new PropertyValueFactory<FlightsModel, String>("toId"));
+		dateId.setCellValueFactory(new PropertyValueFactory<FlightsModel, String>("dateId"));
+		timeId.setCellValueFactory(new PropertyValueFactory<FlightsModel, String>("timeId"));
+		classId.setCellValueFactory(new PropertyValueFactory<FlightsModel, String>("classId"));
+		priceId.setCellValueFactory(new PropertyValueFactory<FlightsModel, String>("priceId"));
+
+		// auto adjust width of columns depending on their content
+		tblFlights.setColumnResizePolicy((param) -> true);
+		Platform.runLater(() -> customResize(tblFlights));
+
+		tblFlights.setVisible(false); // set invisible initially
+		
+		// Set the initial values for observable lists
+		System.out.println("Set the values");
+		From.setItems(FromL);
+		From.setValue("Chicago");
+		To.setItems(ToL);
+		To.setValue("Orlando");
+		Class.setItems(ClassL);
+		Class.setValue("Economy");
+		
+		// Code for tblHistory table view
+		FromId.setCellValueFactory(new PropertyValueFactory<HistoryModel, String>("FromId"));
+		ToId.setCellValueFactory(new PropertyValueFactory<HistoryModel, String>("ToId"));
+		DateId.setCellValueFactory(new PropertyValueFactory<HistoryModel, String>("DateId"));
+		TimeId.setCellValueFactory(new PropertyValueFactory<HistoryModel, String>("TimeId"));
+		ClassId.setCellValueFactory(new PropertyValueFactory<HistoryModel, String>("ClassId"));
+
+
+		// auto adjust width of columns depending on their content
+		tblHistory.setColumnResizePolicy((param) -> true);
+		Platform.runLater(() -> customResize(tblHistory));
+		tblHistory.setVisible(false); // set invisible initially
+	}
+	
+    public void customResize(TableView<?> view) 
+    {
+
+        AtomicLong width = new AtomicLong();
+        view.getColumns().forEach(col -> {
+            width.addAndGet((long) col.getWidth());
+        });
+        double tableWidth = view.getWidth();
+
+        if (tableWidth > width.get()) {
+            view.getColumns().forEach(col -> {
+                col.setPrefWidth(col.getWidth()+((tableWidth-width.get())/view.getColumns().size()));
+            });
+        }
+    }
+	
 	
 	public void logout() {
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -140,6 +227,7 @@ public class AdminController {
 	}
 
 	public AdminController() {
+		
 	
 	}
 	
@@ -149,6 +237,7 @@ public class AdminController {
 		pane3.setVisible(false);
 		pane2.setVisible(false);
 		pane1.setVisible(false);
+		pane5.setVisible(false);
 	}
 	
 	public void addadminuser() {
@@ -156,33 +245,18 @@ public class AdminController {
 		pane3.setVisible(false);
 		pane2.setVisible(true);
 		pane1.setVisible(false);
+		pane5.setVisible(false);
 	}
  
-	final ObservableList<String> UserTypeL = FXCollections.observableArrayList(
-	        "User","Admin" );
-	final ObservableList<String> FromL = FXCollections.observableArrayList(
-			"Chicago", "New York", "Seattle", "Orlando", "Dallas", "California" );
-	final ObservableList<String> ToL = FXCollections.observableArrayList(
-			"Chicago", "New York", "Seattle", "Orlando", "Dallas", "California" );
-	final ObservableList<String> ClassL = FXCollections.observableArrayList(
-			"Economy","Premium Economy", "Business", "First Class" );
-	@FXML
-	private void initialize() {
-		UserType.setValue("User");
-		UserType.setItems(UserTypeL);
-		From.setItems(FromL);
-		From.setValue("Chicago");
-		To.setItems(ToL);
-		To.setValue("Orlando");
-		Class.setItems(ClassL);
-		Class.setValue("Economy");
-	}
 	
 	public void viewprofile() {
 		pane4.setVisible(false);
 		pane3.setVisible(false);
 		pane2.setVisible(false);
 		pane1.setVisible(true);
+		pane5.setVisible(false);
+		
+		
         System.out.println(user_name);
 		
 		// Create a DAO instance of the mode
@@ -210,7 +284,40 @@ public class AdminController {
 		pane3.setVisible(true);
 		pane2.setVisible(false);
 		pane1.setVisible(false);
+		pane5.setVisible(false);
+		
+		// Create data access instance for History data access object
+		AdminHistoryDao AH1 = new AdminHistoryDao();
+		
+		try
+		{
+			tblHistory.getItems().setAll(AH1.getHistory());
+			if(tblHistory.getItems().isEmpty())
+			{
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Alert Message");
+				alert.setHeaderText("History Info");
+				alert.setContentText("No Ticket History");
+				alert.showAndWait();
+			}
+			else	
+			tblHistory.setVisible(true);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error while printing ticket hisrory " + e.getMessage());
+		}
 	}
+	
+	public void delete()
+	{
+		pane4.setVisible(false);
+		pane3.setVisible(true);
+		pane2.setVisible(false);
+		pane1.setVisible(false);
+		pane5.setVisible(false);
+	}
+	
 
 	public void book() {
 		TextInputDialog dialog = new TextInputDialog("Enter payment details");
@@ -383,7 +490,56 @@ public class AdminController {
 		alert.showAndWait();
 	}
 
-	public void search() {
+	public void search() 
+	
+	{
+		
+		pane5.setVisible(true);
+		
+		String F_FROM = this.From.getValue();
+		String F_TO = this.To.getValue();
+		LocalDate F_DATE = this.Date.getValue();
+		String F_CLASS = this.Class.getValue();
+		
+		
+		// Create data access instance for Flights object
+		FlightsDao F1 = new FlightsDao();
+		
+		try
+		{
+			tblFlights.getItems().setAll(F1.getFlights(F_FROM, F_TO, F_DATE, F_CLASS));
+			if(tblFlights.getItems().isEmpty())
+			{
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Alert Message");
+				alert.setHeaderText("Flights Info");
+				alert.setContentText("No flights available for the search");
+				alert.showAndWait();
+			}
+			else
+			tblFlights.setVisible(true);
+		}
+		catch (Exception e)
+		{
+			System.out.println("No flights available for the search" +e.getMessage());
+		}
+		
+	}
+	
+	@FXML
+	public void click(MouseEvent event)
+	{
+	    if (event.getClickCount() == 2) //Checking double click
+	    {
+	    	//bookBtn.setDisable(false);
+	    	System.out.println("Fetching data from the view");
+	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getFromId());
+	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getToId());
+	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getDateId());
+	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getTimeId());
+	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getClassId());
+
+	    }
 	}
 
 

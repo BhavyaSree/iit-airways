@@ -28,8 +28,6 @@ public class CustomerViewDao extends DBConnect
 		{
 			Statement stmt = connection.getConnection().createStatement();
 			
-			System.out.println(Sql);
-			
 			rs = stmt.executeQuery(Sql);						
 			
 			if(rs.next())

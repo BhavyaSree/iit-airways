@@ -15,12 +15,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="813.0" layoutX="-7.0" pickOnBounds="true">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
          <image>
             <Image url="@flight_plane_sky_color_line_61872_1920x1080.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="205.0" layoutY="31.0" text="Welcome to Illinois Tech Airways User Account" textAlignment="CENTER">
+      <Label layoutX="202.0" layoutY="34.0" text="Welcome to Illinois Tech Airways User Account" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -95,47 +95,55 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
+            <TableView fx:id="tblHistory" layoutY="80.0" prefHeight="283.0" prefWidth="537.0">
+              <columns>
+                <TableColumn fx:id="FromId" prefWidth="90.0" style="-fx-alignment: center;" text="FROM" />
+                  <TableColumn fx:id="ToId" prefWidth="90.0" style="-fx-alignment: center;" text="TO" />
+                  <TableColumn fx:id="DateId" prefWidth="90.0" style="-fx-alignment: center;" text="JOURNEY DATE" />
+                  <TableColumn fx:id="TimeId" prefWidth="90.0" style="-fx-alignment: center;" text="START TIME" />
+                  <TableColumn fx:id="ClassId" prefWidth="85.0" style="-fx-alignment: center;" text="CLASS" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
-      <Pane layoutX="182.0" layoutY="90.0">
+      <Pane fx:id="pane3" layoutX="175.0" layoutY="79.0" prefHeight="482.0" prefWidth="615.0">
          <children>
-            <Label text="From:">
+            <Label layoutX="7.0" layoutY="11.0" text="From:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="147.0" layoutY="1.0" text="To:">
+            <Label layoutX="154.0" layoutY="12.0" text="To:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="From" layoutY="23.0" prefHeight="25.0" prefWidth="126.0" />
-            <DatePicker fx:id="Date" layoutX="298.0" layoutY="23.0" prefHeight="25.0" prefWidth="126.0" />
-            <Label layoutX="297.0" layoutY="1.0" text="Date:">
+            <ChoiceBox fx:id="From" layoutX="7.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <DatePicker fx:id="Date" layoutX="305.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <Label layoutX="304.0" layoutY="12.0" text="Date:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="449.0" layoutY="1.0" text="Class:">
+            <Label layoutX="456.0" layoutY="12.0" text="Class:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="To" layoutX="148.0" layoutY="23.0" prefHeight="25.0" prefWidth="126.0" />
-            <ChoiceBox fx:id="Class" layoutX="452.0" layoutY="23.0" prefHeight="25.0" prefWidth="126.0" />
-            <Button layoutX="227.0" layoutY="59.0" mnemonicParsing="false" onAction="#search" prefWidth="100.0" text="SEARCH" />
-            <Button layoutX="231.0" layoutY="435.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
-            <Pane layoutX="8.0" layoutY="94.0" prefHeight="333.0" prefWidth="562.0">
+            <ChoiceBox fx:id="To" layoutX="155.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <ChoiceBox fx:id="Class" layoutX="459.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
+            <Button layoutX="234.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" prefWidth="100.0" text="SEARCH" />
+            <Button fx:id="bookBtn" layoutX="238.0" layoutY="446.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
+            <Pane fx:id="pane4" layoutX="2.0" layoutY="108.0" prefHeight="323.0" prefWidth="615.0">
                <children>
-                  <TableView layoutX="-9.0" layoutY="7.0" prefHeight="325.0" prefWidth="578.0">
+                  <TableView fx:id="tblFlights" editable="true" layoutX="13.0" layoutY="14.0" onMouseClicked="#click" prefHeight="295.0" prefWidth="569.0">
                     <columns>
-                      <TableColumn fx:id="selectId" prefWidth="41.0" text="Select" />
-                      <TableColumn fx:id="fromId" prefWidth="109.0" text="From" />
-                        <TableColumn fx:id="toId" prefWidth="97.0" text="To" />
-                        <TableColumn fx:id="dateId" prefWidth="76.0" text="Date" />
-                        <TableColumn fx:id="timeId" prefWidth="76.0" text="Time" />
-                        <TableColumn fx:id="classId" prefWidth="103.0" text="Class" />
-                        <TableColumn fx:id="classPrice" prefWidth="75.0" text="Price" />
+                      <TableColumn fx:id="fromId" prefWidth="94.0" style="-fx-alignment: center;" text="FROM" />
+                        <TableColumn fx:id="toId" prefWidth="92.0" style="-fx-alignment: center;" text="TO" />
+                        <TableColumn fx:id="dateId" prefWidth="101.0" style="-fx-alignment: center;" text="DATE" />
+                        <TableColumn fx:id="timeId" prefWidth="92.0" style="-fx-alignment: center;" text="TIME" />
+                        <TableColumn fx:id="classId" prefWidth="107.0" style="-fx-alignment: center;" text="CLASS" />
+                        <TableColumn fx:id="priceId" prefWidth="82.0" style="-fx-alignment: center;" text="PRICE" />
                     </columns>
                   </TableView>
                </children>
