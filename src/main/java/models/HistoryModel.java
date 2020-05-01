@@ -8,6 +8,22 @@ public class HistoryModel
 	private String DateId;
 	private String TimeId;
 	private String ClassId;
+	private String LNameId;
+	
+	
+	
+	/**
+	 * @return the lNameId
+	 */
+	public String getLNameId() {
+		return LNameId;
+	}
+	/**
+	 * @param lNameId the lNameId to set
+	 */
+	public void setLNameId(String lNameId) {
+		LNameId = lNameId;
+	}
 	/**
 	 * @return the fromId
 	 */

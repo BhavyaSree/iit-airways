@@ -116,6 +116,7 @@ public class SignUpController {
 		User user = new User();
 
 		// Set the values from the view
+		customer.settxtUsername(USERNAME);
 		customer.settxtLname(LNAME);
 		customer.settxtFname(FNAME);
 		customer.settxtDob(DOB);

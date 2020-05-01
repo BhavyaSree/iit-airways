@@ -20,7 +20,7 @@ public class AdminHistoryDao extends DBConnect
 		
 		ResultSet rs = null;
 		
-		String Sql = "Select FROMDEST, TODEST, TRAVELDATE, TRAVELTIME, CLASS from ars_ticketdetails order by TRAVELDATE, TRAVELTIME;" ;  
+		String Sql = "Select LNAME, FROMDEST, TODEST, TRAVELDATE, TRAVELTIME, CLASS from ars_ticketdetails order by TRAVELDATE, TRAVELTIME;" ;  
 		
 		try
 		{
@@ -32,12 +32,13 @@ public class AdminHistoryDao extends DBConnect
 			while(rs.next())
 			{		
 				HistoryModel H1 = new HistoryModel();
-
-				H1.setFromId(rs.getString(1));
-				H1.setToId(rs.getString(2));
-				H1.setDateId(rs.getString(3));
-				H1.setTimeId(rs.getString(4));
-				H1.setClassId(rs.getString(5));
+				
+				H1.setLNameId(rs.getString(1));
+				H1.setFromId(rs.getString(2));
+				H1.setToId(rs.getString(3));
+				H1.setDateId(rs.getString(4));
+				H1.setTimeId(rs.getString(5));
+				H1.setClassId(rs.getString(6));
 				
 				history.add(H1);
 				

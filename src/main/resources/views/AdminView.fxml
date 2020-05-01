@@ -72,7 +72,7 @@
             <ChoiceBox fx:id="To" layoutX="154.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
             <ChoiceBox fx:id="Class" layoutX="451.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
             <Button layoutX="234.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" prefWidth="100.0" text="SEARCH" />
-            <Button layoutX="240.0" layoutY="438.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
+            <Button fx:id="bookBtn" layoutX="240.0" layoutY="438.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
          </children>
       </Pane>
       <Pane fx:id="pane1" layoutX="226.0" layoutY="96.0" prefHeight="400.0" prefWidth="545.0" visible="false">
@@ -211,23 +211,24 @@
             <PasswordField fx:id="txtPassword" layoutX="120.0" layoutY="367.0" />
          </children>
       </Pane>
-      <Pane fx:id="pane3" layoutX="230.0" layoutY="86.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="467.0" prefWidth="537.0" visible="false">
+      <Pane fx:id="pane3" layoutX="178.0" layoutY="86.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="467.0" prefWidth="589.0" visible="false">
          <children>
-            <Label layoutX="190.0" layoutY="14.0" text="Travel History">
+            <Label layoutX="240.0" layoutY="14.0" text="Travel History">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="tblHistory" layoutY="60.0" onMouseClicked="#click2" prefHeight="321.0" prefWidth="509.0">
+            <TableView fx:id="tblHistory" layoutY="60.0" onMouseClicked="#click2" prefHeight="321.0" prefWidth="589.0">
               <columns>
-                <TableColumn fx:id="FromId" prefWidth="100.0" text="FROM" />
-                <TableColumn fx:id="ToId" prefWidth="100.0" text="TO" />
-                  <TableColumn fx:id="DateId" prefWidth="100.0" text="DATE" />
-                  <TableColumn fx:id="TimeId" prefWidth="100.0" text="TIME" />
-                  <TableColumn fx:id="ClassId" prefWidth="110.0" text="CLASS" />
+                  <TableColumn fx:id="LNameId" prefWidth="100.0" style="-fx-alignment: center;" text="LastName" />
+                <TableColumn fx:id="FromId" prefWidth="100.0" style="-fx-alignment: center;" text="FROM" />
+                <TableColumn fx:id="ToId" prefWidth="100.0" style="-fx-alignment: center;" text="TO" />
+                  <TableColumn fx:id="DateId" prefWidth="100.0" style="-fx-alignment: center;" text="DATE" />
+                  <TableColumn fx:id="TimeId" prefWidth="100.0" style="-fx-alignment: center;" text="TIME" />
+                  <TableColumn fx:id="ClassId" prefWidth="90.0" style="-fx-alignment: center;" text="CLASS" />
               </columns>
             </TableView>
-            <Button layoutX="190.0" layoutY="420.0" mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="100.0" text="DELETE" />
+            <Button fx:id="deleteBtn" layoutX="240.0" layoutY="420.0" mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="100.0" text="DELETE" />
          </children>
       </Pane>
    </children>

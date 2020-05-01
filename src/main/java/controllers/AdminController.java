@@ -13,6 +13,7 @@ import dao.AdminHistoryDao;
 import dao.CustomerDao;
 import dao.CustomerViewDao;
 import dao.FlightsDao;
+import dao.TicketDao;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.ChoiceBox;
@@ -35,6 +37,7 @@ import models.Admin;
 import models.Customer;
 import models.FlightsModel;
 import models.HistoryModel;
+import models.TicketBookModel;
 import models.User;
 
 
@@ -121,6 +124,8 @@ public class AdminController implements Initializable {
 	@FXML
 	private TableView<HistoryModel> tblHistory;
 	@FXML
+	private TableColumn<HistoryModel, String> LNameId;
+	@FXML
 	private TableColumn<HistoryModel, String> FromId;
 	@FXML
 	private TableColumn<HistoryModel, String> ToId;
@@ -130,9 +135,27 @@ public class AdminController implements Initializable {
 	private TableColumn<HistoryModel, String> TimeId;
 	@FXML
 	private TableColumn<HistoryModel, String> ClassId;
+	@FXML
+	private Button bookBtn;
+	
+	private static String first_name;
+	private static String last_name;
+	private static String email;
+	private static long phone;
+	private static String F_FROM;
+	private static String F_TO;
+	private static String F_DATE;
+	private static String F_TIME;
+	private static String F_CLASS;
+	private static String F_PRICE;
+	private static String T_FROM;
+	private static String T_TO;
+	private static String T_DATE;
+	private static String T_TIME;
+	private static String T_CLASS;
+	private static String T_last_name;
 
 	
-
 	static Customer c = new Customer();
 	static String user_name = c.gettxtUsername();
 	
@@ -147,6 +170,8 @@ public class AdminController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources)
 	
 	{
+		bookBtn.setDisable(true);
+
 		
 		//System.out.println(user_name);
 		// Code for tblFlights table view
@@ -173,6 +198,7 @@ public class AdminController implements Initializable {
 		Class.setValue("Economy");
 		
 		// Code for tblHistory table view
+		LNameId.setCellValueFactory(new PropertyValueFactory<HistoryModel, String>("LNameId"));
 		FromId.setCellValueFactory(new PropertyValueFactory<HistoryModel, String>("FromId"));
 		ToId.setCellValueFactory(new PropertyValueFactory<HistoryModel, String>("ToId"));
 		DateId.setCellValueFactory(new PropertyValueFactory<HistoryModel, String>("DateId"));
@@ -279,7 +305,8 @@ public class AdminController implements Initializable {
 	}
 	}
 
-	public void viewhistory() {
+	public void viewhistory() 
+	{
 		pane4.setVisible(false);
 		pane3.setVisible(true);
 		pane2.setVisible(false);
@@ -302,10 +329,11 @@ public class AdminController implements Initializable {
 			}
 			else	
 			tblHistory.setVisible(true);
+	
 		}
 		catch (Exception e)
 		{
-			System.out.println("Error while printing ticket hisrory " + e.getMessage());
+			System.out.println("Error while printing ticket history " + e.getMessage());
 		}
 	}
 	
@@ -315,13 +343,13 @@ public class AdminController implements Initializable {
 	{
 	    if (event.getClickCount() == 2) //Checking double click
 	    {
-	    	//bookBtn.setDisable(false);
 	    	System.out.println("Fetching data from the view");
-	        System.out.println(tblHistory.getSelectionModel().getSelectedItem().getFromId());
-	        System.out.println(tblHistory.getSelectionModel().getSelectedItem().getToId());
-	        System.out.println(tblHistory.getSelectionModel().getSelectedItem().getDateId());
-	        System.out.println(tblHistory.getSelectionModel().getSelectedItem().getTimeId());
-	        System.out.println(tblHistory.getSelectionModel().getSelectedItem().getClassId());
+	    	T_last_name = tblHistory.getSelectionModel().getSelectedItem().getLNameId();
+	        T_FROM = tblHistory.getSelectionModel().getSelectedItem().getFromId();
+	        T_TO = tblHistory.getSelectionModel().getSelectedItem().getToId();
+	        T_DATE = tblHistory.getSelectionModel().getSelectedItem().getDateId();
+	        T_TIME = tblHistory.getSelectionModel().getSelectedItem().getTimeId();
+	        T_CLASS =tblHistory.getSelectionModel().getSelectedItem().getClassId();
 
 	    }
 	}
@@ -333,6 +361,33 @@ public class AdminController implements Initializable {
 		pane2.setVisible(false);
 		pane1.setVisible(false);
 		pane5.setVisible(false);
+		
+		// Create data access instance to delete ticket
+		TicketDao T = new TicketDao();
+		
+		try
+		{
+			System.out.println(T_last_name);
+			System.out.println(T_FROM);
+			System.out.println(T_TO);
+			System.out.println(T_DATE);
+			System.out.println(T_TIME);
+			System.out.println(T_CLASS);
+			
+			
+			T.deleteTicket(T_last_name, T_FROM, T_TO, T_DATE, T_TIME, T_CLASS);
+			
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Alert Message");
+			alert.setHeaderText("Delete Info");
+			alert.setContentText("Ticket has been deleted Successfully!!");
+			alert.showAndWait();
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error while deleting the ticket" + e.getMessage());
+		}
+		
 	}
 	
 
@@ -342,20 +397,58 @@ public class AdminController implements Initializable {
 		dialog.setHeaderText("Debit/Credit Card");
 		dialog.setContentText("Please enter your card number");
 		Optional<String> cardno = dialog.showAndWait();
-		if (cardno.isPresent()) {
+		if (cardno.isPresent()) 
+		{
 			String cardnumber = cardno.get();
 			System.out.println("Card number entered: " + cardnumber);
+			
+			TicketDao T1 = new TicketDao();
+			
+			try
+			{
+				ArrayList<TicketBookModel> arrayList = T1.getCustomer(user_name);
+					
+				for (TicketBookModel ticket : arrayList) 
+				{
+					
+					last_name = ticket.getLast_name();
+					first_name = ticket.getFirst_name();
+					email = ticket.getEmail();
+					phone = Long.parseLong(ticket.getPhone());
+					
+				}
+				
+				System.out.println(last_name);
+				System.out.println(first_name);
+				System.out.println(email);
+				System.out.println(phone);
+				System.out.println(F_FROM);
+				System.out.println(F_TO);
+				System.out.println(F_DATE);
+				System.out.println(F_TIME);
+				System.out.println(F_CLASS);
+				System.out.println(F_PRICE);
+				
+				T1.BookTicket(user_name, last_name, first_name, email, phone, F_FROM, F_TO, F_DATE, F_TIME, F_CLASS, F_PRICE);	
+			}
+			catch (Exception e)
+			{
+				System.out.println("Not able to book the ticket" +e.getMessage());
+			}			
 		}
-		try {
+		
+		try 
+		{
 			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/TicketView.fxml"));
-			System.out.println("Launched TicketDeatils Screen");
+			System.out.println("Launched TicketDetails Screen");
 			Scene scene = new Scene(root, 800, 600);
 			Main.stage.setScene(scene);
 			Main.stage.setTitle("Ticket Details");
 			Main.stage.show();
-			TicketController T1 = new TicketController();
-			T1.display(user_name);
-		} catch (Exception e) {
+			TicketController.setUsername(user_name);
+		} 
+		catch (Exception e) 
+		{
 			System.out.println("Error in inflating view: " + e.getMessage());
 		}
 	}
@@ -426,6 +519,7 @@ public class AdminController implements Initializable {
 				User user = new User();
 	  
 				// Set the values from the view
+				customer.settxtUsername(USERNAME);
 				customer.settxtLname(LNAME);
 				customer.settxtFname(FNAME);
 				customer.settxtDob(DOB);
@@ -535,6 +629,8 @@ public class AdminController implements Initializable {
 			}
 			else
 			tblFlights.setVisible(true);
+			bookBtn.setDisable(false);
+
 		}
 		catch (Exception e)
 		{
@@ -550,12 +646,12 @@ public class AdminController implements Initializable {
 	    {
 	    	//bookBtn.setDisable(false);
 	    	System.out.println("Fetching data from the view");
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getFromId());
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getToId());
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getDateId());
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getTimeId());
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getClassId());
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getPriceId());
+	    	F_FROM = tblFlights.getSelectionModel().getSelectedItem().getFromId();
+	    	F_TO = tblFlights.getSelectionModel().getSelectedItem().getToId();
+	    	F_DATE = tblFlights.getSelectionModel().getSelectedItem().getDateId();
+	    	F_TIME = tblFlights.getSelectionModel().getSelectedItem().getTimeId();
+	    	F_CLASS = tblFlights.getSelectionModel().getSelectedItem().getClassId();
+	    	F_PRICE = tblFlights.getSelectionModel().getSelectedItem().getPriceId();	
 
 	    }
 	}

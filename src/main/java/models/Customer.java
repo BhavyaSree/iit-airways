@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public class Customer 
 {
 
-	// instance fields
-	private String txtUsername;
+	    // instance fields
+	    private String txtUsername;
 		private String txtLname;
 		private String txtFname;
 		private LocalDate txtDob;

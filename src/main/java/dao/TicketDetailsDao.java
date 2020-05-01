@@ -17,7 +17,7 @@ public class TicketDetailsDao extends DBConnect{
 				String Sql1 = "Select MAX(BOOKINGID) from ars_ticketdetails  where UNAME = " 
 												+ "'" + txtUsername +"'" ;	
 				ResultSet rs1 =null;
-
+                
 				try
 				{
 					Statement stmt1 = connection.getConnection().createStatement();
@@ -27,7 +27,7 @@ public class TicketDetailsDao extends DBConnect{
 					if(rs1.next()){Bookid = rs1.getInt(1);}
 					else{ Bookid = 0;}
 					
-				String Sql = "Select LNAME,FNAME,EMAIL,PHONE,FROMDEST,TODEST,TRAVELDATE,TRAVELTIME,CLASS,STATUS,BOOKINGID from ars_ticketdetails  where BOOKINGID = " 
+				String Sql = "Select LNAME,FNAME,EMAIL,PHONE,FROMDEST,TODEST,TRAVELDATE,TRAVELTIME,CLASS,PRICE,STATUS,BOOKINGID from ars_ticketdetails  where BOOKINGID = " 
 						+ "'" + Bookid +"'" ;	
 				ArrayList<TicketDetailsModel> ticket = new ArrayList<TicketDetailsModel>();
 				ResultSet rs = null;
@@ -39,7 +39,6 @@ public class TicketDetailsDao extends DBConnect{
 					System.out.println(Sql);
 					
 					rs = stmt.executeQuery(Sql);						
-					
 					if(rs.next())
 					{						
 						TicketDetailsModel t1 = new TicketDetailsModel();
@@ -53,8 +52,9 @@ public class TicketDetailsDao extends DBConnect{
 						t1.setlblDate(rs.getString(7));
 						t1.setlblTime(rs.getString(8));
 						t1.setlblClass(rs.getString(9));
-						t1.setlblStatus(rs.getString(10));
-						t1.setlblBookingId(rs.getInt(11));
+						t1.setlblPrice(rs.getString(10));
+						t1.setlblStatus(rs.getString(11));
+						t1.setlblBookingId(rs.getInt(12));
 						ticket.add(t1);
 						System.out.println("Sucessfully fetched ticket details from database");
 					}

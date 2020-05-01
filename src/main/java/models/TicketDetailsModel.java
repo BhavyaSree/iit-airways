@@ -6,6 +6,7 @@ public class TicketDetailsModel {
 	    private String txtUsername;
 		private String lblLname;
 		private String lblFname;
+		private String lblPrice;
 		private long lblPhone;
 		private String lblEmail;
 		private String lblDate;
@@ -148,6 +149,20 @@ public class TicketDetailsModel {
 			this.lblBookingId = lblBookingId;
 		}
 
+		/**
+		 * @return the txtZipcode
+		 */
+		public String getlblPrice() {
+			return lblPrice;
+		}
+
+		/**
+		 * @param txtZipcode the txtZipcode to set
+		 */
+		public void setlblPrice(String lblPrice) {
+			this.lblPrice = lblPrice;
+		}
+		
 		/**
 		 * @return the txtEmail
 		 */

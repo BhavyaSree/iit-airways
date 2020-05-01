@@ -11,7 +11,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import models.Customer;
 import models.TicketDetailsModel;
+import models.User;
 
 
 public class TicketController {
@@ -38,33 +41,50 @@ public class TicketController {
 	private Label lblClass;
 	@FXML
 	private Label lblStatus;
+	@FXML
+	private Label lblPrice;
+	@FXML
+	private Pane pane1;
 	
+	static Customer c = new Customer();
+	static String user_name = c.gettxtUsername();
 	
-public void display(String user_name)
+	public static void setUsername(String username) {
+		user_name = username;
+		System.out.println("Welcome User: " + user_name + "!");
+	}
+
+public void viewTicket()
 {
-	
-	// Create a DAO instance of the model
-	TicketDetailsDao TicketDetailsDao = new TicketDetailsDao();
-	ArrayList<TicketDetailsModel> arrayList = TicketDetailsDao.getCustomer(user_name);
+	  //TicketDetailsModel cust = new TicketDetailsModel();
+	 // String user_name = cust.gettxtUsername();
+
+      System.out.println(user_name);
+	  pane1.setVisible(true);
+	  //String user_name = "admin";
+	  // Create a DAO instance of the model
+	  TicketDetailsDao TicketDetailsDao = new TicketDetailsDao();
+	  ArrayList<TicketDetailsModel> arrayList = TicketDetailsDao.getCustomer(user_name);
 	 
 	try {
-	for (@SuppressWarnings("unused") TicketDetailsModel ticket : arrayList) 
+	for (TicketDetailsModel ticket : arrayList) 
 	{
 		System.out.println("Displaying Ticket details");
-		//lblBookingId.setText(Integer.toString(Ticket.getlblBookingId()));
-		//lblLname.setText(ticket.getlblLname());
-		/*lblFname.setText(Ticket.getlblFname());
-		lblEmail.setText(Ticket.getlblEmail());
-		lblPhone.setText(Long.toString(Ticket.getlblPhone()));
-		lblFrom.setText(Ticket.getlblFrom());
-		lblTo.setText(Ticket.getlblTo());
-		lblDate.setText(Ticket.getlblDate());
-		lblTime.setText(Ticket.getlblTime());
-		lblStatus.setText(Ticket.getlblStatus());
-		lblClass.setText(Ticket.getlblClass());*/
+	    lblBookingId.setText(Integer.toString(ticket.getlblBookingId()));
+		lblLname.setText(ticket.getlblLname());
+		lblFname.setText(ticket.getlblFname());
+		lblEmail.setText(ticket.getlblEmail());
+		lblPhone.setText(Long.toString(ticket.getlblPhone()));
+		lblFrom.setText(ticket.getlblFrom());
+		lblTo.setText(ticket.getlblTo());
+		lblDate.setText(ticket.getlblDate());
+		lblTime.setText(ticket.getlblTime());
+		lblStatus.setText(ticket.getlblStatus());
+		lblClass.setText(ticket.getlblClass());
+		lblPrice.setText(ticket.getlblPrice());
 	}
 	}catch(Exception e) {
-		System.out.println("Error in fetching ticket details: " + e.getMessage());
+		System.out.println("Error in setting ticket details: " + e.getMessage());
 	}
 }
 

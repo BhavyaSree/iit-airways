@@ -7,6 +7,7 @@ import application.Main;
 import dao.CustomerViewDao;
 import dao.FlightsDao;
 import dao.HistoryDao;
+import dao.TicketDao;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,12 +25,14 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 //import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import models.Customer;
 import models.FlightsModel;
 import models.HistoryModel;
+import models.TicketBookModel;
 
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicLong;
@@ -87,8 +90,8 @@ public class UserController implements Initializable {
 	private TableColumn<FlightsModel, String> classId;
 	@FXML
 	private TableColumn<FlightsModel, String> priceId;
-	//@FXML
-	//private Button bookBtn;
+	@FXML
+	private Button bookBtn;
 	@FXML
 	private TableView<HistoryModel> tblHistory;
 	@FXML
@@ -101,10 +104,22 @@ public class UserController implements Initializable {
 	private TableColumn<HistoryModel, String> TimeId;
 	@FXML
 	private TableColumn<HistoryModel, String> ClassId;
+	
+	private static String first_name;
+	private static String last_name;
+	private static String email;
+	private static long phone;
+	private static String F_FROM;
+	private static String F_TO;
+	private static String F_DATE;
+	private static String F_TIME;
+	private static String F_CLASS;
+	private static String F_PRICE;
 
 
 	static Customer c = new Customer();
 	static String user_name = c.gettxtUsername();
+
 	
 	final ObservableList<String> FromL = FXCollections.observableArrayList(
 			"Chicago", "New York", "Seattle", "Orlando", "Dallas", "California" );
@@ -116,6 +131,8 @@ public class UserController implements Initializable {
 	
 	public void initialize(URL location, ResourceBundle resources) 
 	{
+		bookBtn.setDisable(true);
+		
 		// Code for tblFlights table view
 		fromId.setCellValueFactory(new PropertyValueFactory<FlightsModel, String>("fromId"));
 		toId.setCellValueFactory(new PropertyValueFactory<FlightsModel, String>("toId"));
@@ -264,17 +281,6 @@ public class UserController implements Initializable {
 	
 
 	
-	/*@FXML
-	private void initialize() {
-		From.setItems(FromL);
-		From.setValue("Chicago");
-		To.setItems(ToL);
-		To.setValue("Orlando");
-		Class.setItems(ClassL);
-		Class.setValue("Economy");
-	}
-	*/
-	
 	public void search() 
 	{
 		pane4.setVisible(true);
@@ -301,6 +307,7 @@ public class UserController implements Initializable {
 			}
 			else
 			tblFlights.setVisible(true);
+			bookBtn.setDisable(false);
 		}
 		catch (Exception e)
 		{
@@ -316,11 +323,12 @@ public class UserController implements Initializable {
 	    {
 	    	//bookBtn.setDisable(false);
 	    	System.out.println("Fetching data from table");
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getFromId());
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getToId());
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getDateId());
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getTimeId());
-	        System.out.println(tblFlights.getSelectionModel().getSelectedItem().getClassId());
+	    	F_FROM = tblFlights.getSelectionModel().getSelectedItem().getFromId();
+	    	F_TO = tblFlights.getSelectionModel().getSelectedItem().getToId();
+	    	F_DATE = tblFlights.getSelectionModel().getSelectedItem().getDateId();
+	    	F_TIME = tblFlights.getSelectionModel().getSelectedItem().getTimeId();
+	    	F_CLASS = tblFlights.getSelectionModel().getSelectedItem().getClassId();
+	    	F_PRICE = tblFlights.getSelectionModel().getSelectedItem().getPriceId();	    	
 
 	    }
 	}
@@ -388,10 +396,46 @@ public class UserController implements Initializable {
 		dialog.setContentText("Please enter your card number");
 
 		Optional<String> cardno = dialog.showAndWait();
-		if (cardno.isPresent()) 
+		//String card = cardno.get();
+		if (cardno.isPresent() )
+
 		{
 			String cardnumber = cardno.get();
 			System.out.println("Card number entered: " + cardnumber);
+			
+			TicketDao TB = new TicketDao();
+			
+			try
+			{
+				ArrayList<TicketBookModel> arrayList = TB.getCustomer(user_name);
+					
+				for (TicketBookModel ticket : arrayList) 
+				{
+					
+					last_name = ticket.getLast_name();
+					first_name = ticket.getFirst_name();
+					email = ticket.getEmail();
+					phone = Long.parseLong(ticket.getPhone());
+					
+				}
+				
+				System.out.println(last_name);
+				System.out.println(first_name);
+				System.out.println(email);
+				System.out.println(phone);
+				System.out.println(F_FROM);
+				System.out.println(F_TO);
+				System.out.println(F_DATE);
+				System.out.println(F_TIME);
+				System.out.println(F_CLASS);
+				System.out.println(F_PRICE);
+				
+				TB.BookTicket(user_name, last_name, first_name, email, phone, F_FROM, F_TO, F_DATE, F_TIME, F_CLASS, F_PRICE);	
+			}
+			catch (Exception e)
+			{
+				System.out.println("Not able to book the ticket" +e.getMessage());
+			}			
 		}
 		try 
 		{			
@@ -401,8 +445,7 @@ public class UserController implements Initializable {
 			Main.stage.setScene(scene);
 			Main.stage.setTitle("Ticket Details");
 			Main.stage.show();
-			TicketController T1 = new TicketController();
-			T1.display(user_name);
+			TicketController.setUsername(user_name);
 		} catch (Exception e) 
 		{
 			System.out.println("Error in inflating view: " + e.getMessage());
