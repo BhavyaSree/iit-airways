@@ -95,12 +95,13 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="tblHistory" layoutY="80.0" prefHeight="283.0" prefWidth="537.0">
+            <TableView fx:id="tblHistory" layoutY="80.0" prefHeight="283.0" prefWidth="545.0">
               <columns>
-                <TableColumn fx:id="FromId" prefWidth="90.0" style="-fx-alignment: center;" text="FROM" />
-                  <TableColumn fx:id="ToId" prefWidth="90.0" style="-fx-alignment: center;" text="TO" />
-                  <TableColumn fx:id="DateId" prefWidth="90.0" style="-fx-alignment: center;" text="JOURNEY DATE" />
-                  <TableColumn fx:id="TimeId" prefWidth="90.0" style="-fx-alignment: center;" text="START TIME" />
+                  <TableColumn fx:id="BookId" prefWidth="60.0" style="-fx-alignment: center;" text="Id" />
+                <TableColumn fx:id="FromId" prefWidth="100.0" style="-fx-alignment: center;" text="FROM" />
+                  <TableColumn fx:id="ToId" prefWidth="100.0" style="-fx-alignment: center;" text="TO" />
+                  <TableColumn fx:id="DateId" prefWidth="100.0" style="-fx-alignment: center;" text="JOURNEY DATE" />
+                  <TableColumn fx:id="TimeId" prefWidth="100.0" style="-fx-alignment: center;" text="START TIME" />
                   <TableColumn fx:id="ClassId" prefWidth="85.0" style="-fx-alignment: center;" text="CLASS" />
               </columns>
             </TableView>

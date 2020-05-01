@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import models.FlightsModel;
@@ -15,7 +14,7 @@ public class FlightsDao extends DBConnect
 	// Declare DB objects
 	DBConnect connection = new DBConnect();
 	
-	public ArrayList<FlightsModel> getFlights(String from_place, String to_place, LocalDate date, String in_class)
+	public ArrayList<FlightsModel> getFlights(String from_place, String to_place, String date, String in_class)
 	{
 		
 		System.out.println("Starting to fetch the Flights details");
@@ -35,7 +34,7 @@ public class FlightsDao extends DBConnect
 			
 			statement.setString(1, from_place);
 			statement.setString(2, to_place);
-			statement.setDate(3, java.sql.Date.valueOf(date));
+			statement.setString(3, date);
 			statement.setString(4, in_class);
 					
 			rs = statement.executeQuery();

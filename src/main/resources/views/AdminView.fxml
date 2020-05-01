@@ -220,11 +220,12 @@
             </Label>
             <TableView fx:id="tblHistory" layoutY="60.0" onMouseClicked="#click2" prefHeight="321.0" prefWidth="589.0">
               <columns>
-                  <TableColumn fx:id="LNameId" prefWidth="100.0" style="-fx-alignment: center;" text="LastName" />
-                <TableColumn fx:id="FromId" prefWidth="100.0" style="-fx-alignment: center;" text="FROM" />
-                <TableColumn fx:id="ToId" prefWidth="100.0" style="-fx-alignment: center;" text="TO" />
-                  <TableColumn fx:id="DateId" prefWidth="100.0" style="-fx-alignment: center;" text="DATE" />
-                  <TableColumn fx:id="TimeId" prefWidth="100.0" style="-fx-alignment: center;" text="TIME" />
+                  <TableColumn fx:id="BookId" prefWidth="60.0" style="-fx-alignment: center;" text="Id" />
+                  <TableColumn fx:id="LNameId" prefWidth="90.0" style="-fx-alignment: center;" text="LastName" />
+                <TableColumn fx:id="FromId" prefWidth="90.0" style="-fx-alignment: center;" text="FROM" />
+                <TableColumn fx:id="ToId" prefWidth="90.0" style="-fx-alignment: center;" text="TO" />
+                  <TableColumn fx:id="DateId" style="-fx-alignment: center;" text="DATE" />
+                  <TableColumn fx:id="TimeId" prefWidth="90.0" style="-fx-alignment: center;" text="TIME" />
                   <TableColumn fx:id="ClassId" prefWidth="90.0" style="-fx-alignment: center;" text="CLASS" />
               </columns>
             </TableView>

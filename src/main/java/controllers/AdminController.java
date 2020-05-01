@@ -609,7 +609,7 @@ public class AdminController implements Initializable {
 		
 		String F_FROM = this.From.getValue();
 		String F_TO = this.To.getValue();
-		LocalDate F_DATE = this.Date.getValue();
+		String F_DATE = this.Date.getValue().toString();
 		String F_CLASS = this.Class.getValue();
 		
 		
