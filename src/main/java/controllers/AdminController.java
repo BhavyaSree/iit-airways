@@ -9,6 +9,8 @@
 package controllers;
 
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -554,6 +556,9 @@ public class AdminController implements Initializable {
 		}
 
 		String PHONE = this.atxtPhone.getText();
+		if (PHONE == null || PHONE.trim().equals("")) {
+			return;
+		}
 		String ADDRESS = this.atxtAddress.getText();
 		String CITY = this.atxtCity.getText();
 		String STATE = this.atxtState.getText();
@@ -587,6 +592,21 @@ public class AdminController implements Initializable {
 
 	// method to allow admin to create an admin or user when clicked on create
 	// button
+	
+	private String hashText(String password) throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		md.update(password.getBytes());
+
+		byte byteData[] = md.digest();
+
+		//convert the byte to hex format method 1
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < byteData.length; i++) {
+         sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+        }
+		return sb.toString();
+	}
+	
 	public void create() {
 		// Extract the data from the text fields of view
 		// validating the given inputs
@@ -664,8 +684,15 @@ public class AdminController implements Initializable {
 		customer.settxtState(STATE);
 		customer.settxtZipcode(ZIPCODE);
 		user.settxtUsername(USERNAME);
-		user.settxtPassword(PASSWORD);
 		user.setUserType(USERTYPE);
+		try 
+		{
+			user.settxtPassword(hashText(PASSWORD));
+		} catch (NoSuchAlgorithmException e1) 
+		{
+			System.out.println("Error while setting hash password" + e1.getMessage());
+		}
+		
 
 		// Create data access instance for customer object
 		UserProfileUpdateDao C1 = new UserProfileUpdateDao();

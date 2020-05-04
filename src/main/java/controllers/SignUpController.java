@@ -8,6 +8,8 @@
 package controllers;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import dao.UserProfileUpdateDao;
 import application.Main;
@@ -23,6 +25,8 @@ import models.UserProfileModel;
 import models.LoginModel;
 
 public class SignUpController {
+	
+
 	@FXML
 	private TextField txtLname;
 
@@ -55,9 +59,26 @@ public class SignUpController {
 
 	@FXML
 	private TextField txtPassword;
+	
+	
+	private String hashText(String password) throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		md.update(password.getBytes());
+
+		byte byteData[] = md.digest();
+
+		//convert the byte to hex format method 1
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < byteData.length; i++) {
+         sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+        }
+		return sb.toString();
+	}
+
 
 	// Method to submit the data to database
-	public void submit() {
+	public void submit() 
+	{
 		// Extract the data from the text fields of view
 		// validate the input fields
 		String LNAME = this.txtLname.getText();
@@ -84,26 +105,13 @@ public class SignUpController {
 		if (PHONE == null || PHONE.trim().equals("")) {
 			return;
 		}
-
-		String ADDRESS = this.txtAddress.getText();
-		if (ADDRESS == null || ADDRESS.trim().equals("")) {
-			return;
-		}
-
+		
+		String ADDRESS = this.txtAddress.getText(); 
 		String CITY = this.txtCity.getText();
-		if (CITY == null || CITY.trim().equals("")) {
-			return;
-		}
-
 		String STATE = this.txtState.getText();
-		if (STATE == null || STATE.trim().equals("")) {
-			return;
-		}
+		String ZIPCODE = this.txtZipcode.getText(); 		
 
-		String ZIPCODE = this.txtZipcode.getText();
-		if (ZIPCODE == null || ZIPCODE.trim().equals("")) {
-			return;
-		}
+
 
 		String USERNAME = this.txtUsername.getText();
 		if (USERNAME == null || USERNAME.trim().equals("")) {
@@ -132,7 +140,16 @@ public class SignUpController {
 		customer.settxtState(STATE);
 		customer.settxtZipcode(ZIPCODE);
 		user.settxtUsername(USERNAME);
-		user.settxtPassword(PASSWORD);
+		
+		try 
+		{
+			user.settxtPassword(hashText(PASSWORD));
+		} catch (NoSuchAlgorithmException e1) 
+		{
+			System.out.println("Error while setting hash password" + e1.getMessage());
+		}
+		
+		
 
 		// Create data access instance for customer object
 		UserProfileUpdateDao C1 = new UserProfileUpdateDao();

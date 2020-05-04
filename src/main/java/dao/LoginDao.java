@@ -28,7 +28,7 @@ public class LoginDao extends DBConnect {
 
 		String query = "SELECT * FROM ars_users WHERE username = ? and password = ?;";
 		try (PreparedStatement stmt = connection.prepareStatement(query)) {
-			System.out.println(query);
+			//System.out.println(query);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
 			ResultSet rs = stmt.executeQuery();
