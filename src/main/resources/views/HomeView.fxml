@@ -37,19 +37,14 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Hyperlink>
-      <Label layoutX="195.0" layoutY="394.0" prefWidth="500.0" text="&quot;Repeat business or behavior can be bribed. Loyalty has to be earned.&quot;" textAlignment="CENTER" wrapText="true">
+      <Label layoutX="271.0" layoutY="390.0" prefHeight="27.0" prefWidth="301.0" text="“To Care For People On Life’s Journey”" wrapText="true">
          <font>
-            <Font name="System Italic" size="25.0" />
+            <Font name="System Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="159.0" prefHeight="94.0" prefWidth="380.0" text="Illinois Tech Airwaysprovides services from chicago (ORD) to some of the popular destinations of United States such as California, Washington, NewYork, Boston, Houston, SanFransico, Texas, Austin" textAlignment="JUSTIFY" wrapText="true">
+      <Label layoutX="50.0" layoutY="159.0" prefHeight="94.0" prefWidth="380.0" text="Book flights &amp; fly with Illinois Tech Airways. Receive exclusive air fares and travel in style accross United States with our award-winning airline." textAlignment="JUSTIFY" wrapText="true">
          <font>
             <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="50.0" layoutY="285.0" text="-- Thank you for choosing us !!">
-         <font>
-            <Font name="System Bold Italic" size="15.0" />
          </font>
       </Label>
    </children>

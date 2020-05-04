@@ -20,7 +20,7 @@
             <Image url="@flight_plane_sky_color_line_61872_1920x1080.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="202.0" layoutY="34.0" text="Welcome to Illinois Tech Airways User Account" textAlignment="CENTER">
+      <Label layoutX="221.0" layoutY="34.0" text="Welcome to Illinois Tech Airways User Account" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -137,7 +137,7 @@
             <Button fx:id="bookBtn" layoutX="238.0" layoutY="446.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
             <Pane fx:id="pane4" layoutX="2.0" layoutY="108.0" prefHeight="323.0" prefWidth="615.0">
                <children>
-                  <TableView fx:id="tblFlights" editable="true" layoutX="13.0" layoutY="14.0" onMouseClicked="#click" prefHeight="295.0" prefWidth="569.0">
+                  <TableView fx:id="tblFlights" editable="true" layoutX="13.0" layoutY="14.0" onMouseClicked="#click" prefHeight="295.0" prefWidth="569.0" visible="false">
                     <columns>
                       <TableColumn fx:id="fromId" prefWidth="94.0" style="-fx-alignment: center;" text="FROM" />
                         <TableColumn fx:id="toId" prefWidth="92.0" style="-fx-alignment: center;" text="TO" />

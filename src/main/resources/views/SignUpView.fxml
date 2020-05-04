@@ -88,7 +88,7 @@
          </font>
       </Label>
       <PasswordField fx:id="txtPassword" layoutX="573.0" layoutY="288.0" prefWidth="200.0" />
-      <Button layoutX="559.0" layoutY="365.0" mnemonicParsing="false" onAction="#submit" prefWidth="100.0" text="SUBMIT">
+      <Button layoutX="618.0" layoutY="365.0" mnemonicParsing="false" onAction="#submit" prefWidth="100.0" text="SUBMIT">
          <font>
             <Font size="15.0" />
          </font>

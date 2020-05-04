@@ -21,7 +21,7 @@
             <Image url="@flight_plane_sky_color_line_61872_1920x1080.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="174.0" layoutY="35.0" text="Welcome to Illinois Tech Airways Admin Account" textAlignment="CENTER">
+      <Label layoutX="198.0" layoutY="35.0" text="Welcome to Illinois Tech Airways Admin Account" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -190,7 +190,7 @@
             <TextField fx:id="txtState" layoutX="378.0" layoutY="234.0" />
             <TextField fx:id="txtZipcode" layoutX="120.0" layoutY="277.0" />
             <DatePicker fx:id="txtDob" layoutX="120.0" layoutY="60.0" />
-            <Button layoutX="194.0" layoutY="413.0" mnemonicParsing="false" onAction="#create" prefWidth="100.0" text="CREATE" />
+            <Button fx:id="createBtn" layoutX="194.0" layoutY="413.0" mnemonicParsing="false" onAction="#create" prefWidth="100.0" text="CREATE" />
             <Label layoutX="295.0" layoutY="281.0" text="User Type:">
                <font>
                   <Font size="14.0" />

@@ -10,12 +10,12 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TicketController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
+      <ImageView fitHeight="600.0" fitWidth="800.0" layoutX="1.0" pickOnBounds="true">
          <image>
             <Image url="@flight_plane_sky_color_line_61872_1920x1080.jpg" />
          </image>
       </ImageView>
-      <Pane fx:id="pane1" disable="true" layoutX="185.0" layoutY="49.0" prefHeight="518.0" prefWidth="576.0">
+      <Pane fx:id="pane1" layoutX="185.0" layoutY="49.0" prefHeight="518.0" prefWidth="576.0" visible="false">
          <children>
             <Label layoutX="116.0" layoutY="138.0" text="Last Name:">
                <font>
