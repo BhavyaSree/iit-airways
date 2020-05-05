@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import models.HistoryModel;
 
-public class UserHistoryDao extends DBConnect {
+public class CustomerHistoryDao extends DBConnect {
 
 	// Declare DB objects
 	DBConnect connection = new DBConnect();
@@ -33,7 +33,6 @@ public class UserHistoryDao extends DBConnect {
 			Statement stmt = connection.getConnection().createStatement();
 
 			rs = stmt.executeQuery(Sql);
-			System.out.println(Sql);
 
 			while (rs.next()) {
 				HistoryModel H1 = new HistoryModel();

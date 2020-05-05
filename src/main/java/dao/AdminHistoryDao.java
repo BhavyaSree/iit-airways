@@ -31,7 +31,6 @@ public class AdminHistoryDao extends DBConnect {
 			Statement stmt = connection.getConnection().createStatement();
 
 			rs = stmt.executeQuery(Sql);
-			System.out.println(Sql);
 
 			while (rs.next()) { //get all the records based on booking id, last name  and other fields
 				HistoryModel H1 = new HistoryModel();

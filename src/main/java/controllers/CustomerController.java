@@ -15,9 +15,9 @@ import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicLong;
 import javafx.fxml.Initializable;
 import application.Main;
-import dao.UserProfileViewDao;
+import dao.CustomerProfileViewDao;
 import dao.FlightsSearchDao;
-import dao.UserHistoryDao;
+import dao.CustomerHistoryDao;
 import dao.TicketBookDao;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -39,12 +39,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import models.UserProfileModel;
+import models.CustomerProfileModel;
 import models.FlightSearchModel;
 import models.HistoryModel;
 import models.TicketBookModel;
 
-public class UserController implements Initializable {
+public class CustomerController implements Initializable {
 	@FXML
 	private Pane pane1; // set pane 1
 	@FXML
@@ -124,7 +124,7 @@ public class UserController implements Initializable {
 	private static String F_PRICE; // set global object price in search flight in search view
 
 	// set global user name object
-	static UserProfileModel c = new UserProfileModel();
+	static CustomerProfileModel c = new CustomerProfileModel();
 	static String user_name = c.gettxtUsername();
 
 	// Setting choice box drop down values for from destination, to destination and
@@ -222,7 +222,7 @@ public class UserController implements Initializable {
 		System.out.println("Welcome User: " + user_name + "!");
 	}
 
-	public UserController() {
+	public CustomerController() {
 
 	}
 
@@ -232,14 +232,14 @@ public class UserController implements Initializable {
 		pane2.setVisible(false);
 		pane1.setVisible(true); // set other panes as invisible and set profile screen visible
 		pane4.setVisible(false);
-		System.out.println(user_name);
+
 
 		// Create a DAO instance of the model
-		UserProfileViewDao customerDao = new UserProfileViewDao();
-		ArrayList<UserProfileModel> arrayList = customerDao.getCustomer(user_name); // pass user name to get information
+		CustomerProfileViewDao customerDao = new CustomerProfileViewDao();
+		ArrayList<CustomerProfileModel> arrayList = customerDao.getCustomer(user_name); // pass user name to get information
 
 		// set values in the text fields in view profile screen
-		for (UserProfileModel customer : arrayList) {
+		for (CustomerProfileModel customer : arrayList) {
 			System.out.println("setting the values");
 			txtLname.setText(customer.gettxtLname());
 			txtFname.setText(customer.gettxtFname());
@@ -261,7 +261,7 @@ public class UserController implements Initializable {
 		pane4.setVisible(false);
 
 		// Create data access instance for History data access object
-		UserHistoryDao H1 = new UserHistoryDao();
+		CustomerHistoryDao H1 = new CustomerHistoryDao();
 
 		// if history details are fetched, show table view else show alert to say no
 		// history
@@ -315,16 +315,6 @@ public class UserController implements Initializable {
 
 					}
 
-					System.out.println(last_name);
-					System.out.println(first_name);
-					System.out.println(email);
-					System.out.println(phone);
-					System.out.println(F_FROM);
-					System.out.println(F_TO);
-					System.out.println(F_DATE);
-					System.out.println(F_TIME);
-					System.out.println(F_CLASS);
-					System.out.println(F_PRICE);
 
 					TB.BookTicket(user_name, last_name, first_name, email, phone, F_FROM, F_TO, F_DATE, F_TIME, F_CLASS,
 							F_PRICE);
@@ -432,6 +422,10 @@ public class UserController implements Initializable {
 		}
 
 		String EMAIL = this.txtEmail.getText();
+		if (EMAIL == null || EMAIL.trim().equals("")) {
+			lblError.setText("Error: Email should not be empty");
+			return;
+		}
 
 		String PHONE = this.txtPhone.getText();
 		if (!PHONE.matches("\\d*")) {
@@ -445,7 +439,7 @@ public class UserController implements Initializable {
 		String ZIPCODE = this.txtZipcode.getText();
 
 		// Create a Customer object to set the values
-		UserProfileModel customer = new UserProfileModel();
+		CustomerProfileModel customer = new CustomerProfileModel();
 
 		customer.settxtLname(LNAME);
 		customer.settxtFname(FNAME);
@@ -458,7 +452,7 @@ public class UserController implements Initializable {
 		customer.settxtZipcode(ZIPCODE);
 
 		// Create data access instance for customerView object
-		UserProfileViewDao c1 = new UserProfileViewDao();
+		CustomerProfileViewDao c1 = new CustomerProfileViewDao();
 		c1.update(user_name, customer);
 		// alert message to show that profile has been updated successfully
 		Alert alert = new Alert(AlertType.INFORMATION);

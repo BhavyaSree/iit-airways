@@ -134,10 +134,10 @@ public class LoginController {
 				AdminController.setUsername(username);
 			} else {
 				// if the credentials are user's, launch user view
-				root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/UserView.fxml"));
-				Main.stage.setTitle("User View");
+				root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/CustomerView.fxml"));
+				Main.stage.setTitle("Customer View");
 				System.out.println("Launched User Screen");
-				UserController.setUsername(username);
+				CustomerController.setUsername(username);
 			}
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);

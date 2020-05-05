@@ -47,7 +47,7 @@
       </Label>
       <TextField fx:id="txtPhone" layoutX="185.0" layoutY="265.0" prefWidth="200.0" />
       <TextField fx:id="txtEmail" layoutX="185.0" layoutY="315.0" prefWidth="200.0" />
-      <Label layoutX="70.0" layoutY="315.0" text="Email">
+      <Label layoutX="70.0" layoutY="315.0" text="Email *">
          <font>
             <Font size="15.0" />
          </font>

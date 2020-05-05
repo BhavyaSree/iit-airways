@@ -31,7 +31,6 @@ public class AdminProfileUpdateDao extends DBConnect {
 		try {
 			Statement stmt = connection.getConnection().createStatement();
 
-			System.out.println(Sql);
 
 			rs = stmt.executeQuery(Sql);
 
@@ -69,7 +68,6 @@ public class AdminProfileUpdateDao extends DBConnect {
 		try {
 			PreparedStatement statement = connection.getConnection().prepareStatement(query,
 					Statement.RETURN_GENERATED_KEYS);
-			System.out.println(query);
 			statement.setString(1, admin.getatxtLname());
 			statement.setString(2, admin.getatxtFname());
 			statement.setDate(3, java.sql.Date.valueOf(admin.getatxtDob()));

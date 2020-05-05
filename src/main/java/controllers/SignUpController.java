@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
-import dao.UserProfileUpdateDao;
+import dao.CustomerProfileUpdateDao;
 import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
-import models.UserProfileModel;
+import models.CustomerProfileModel;
 import models.LoginModel;
 
 public class SignUpController {
@@ -105,6 +105,10 @@ public class SignUpController {
 		}
 
 		String EMAIL = this.txtEmail.getText();
+		if (EMAIL == null || EMAIL.trim().equals("")) {
+			lblError.setText("Error: Email should not be empty");
+			return;
+		}
 
 		String PHONE = this.txtPhone.getText();
 		if (!PHONE.matches("\\d*")) {
@@ -132,7 +136,7 @@ public class SignUpController {
 		}
 
 		// Create Customer Object
-		UserProfileModel customer = new UserProfileModel();
+		CustomerProfileModel customer = new CustomerProfileModel();
 		// Create User Object
 		LoginModel user = new LoginModel();
 
@@ -160,7 +164,7 @@ public class SignUpController {
 		
 
 		// Create data access instance for customer object
-		UserProfileUpdateDao C1 = new UserProfileUpdateDao();
+		CustomerProfileUpdateDao C1 = new CustomerProfileUpdateDao();
 		C1.CreateDetails(customer);
 
 		C1.CreateUser(user);

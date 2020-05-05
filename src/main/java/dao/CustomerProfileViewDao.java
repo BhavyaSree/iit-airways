@@ -13,29 +13,27 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import models.UserProfileModel;
+import models.CustomerProfileModel;
 
-public class UserProfileViewDao extends DBConnect {
+public class CustomerProfileViewDao extends DBConnect {
 
 	// Declare DB objects
 	DBConnect connection = new DBConnect();
 
 	// method to fetch the user profile details from table
-	public ArrayList<UserProfileModel> getCustomer(String txtUsername) {
+	public ArrayList<CustomerProfileModel> getCustomer(String txtUsername) {
 		String Sql = "Select LNAME, FNAME, DOB, EMAIL, PHONE, ADDRESS, CITY, STATE, ZIPCODE from ars_customers1 where UNAME = "
 				+ "'" + txtUsername + "'";
-		ArrayList<UserProfileModel> customer = new ArrayList<UserProfileModel>();
+		ArrayList<CustomerProfileModel> customer = new ArrayList<CustomerProfileModel>();
 		ResultSet rs = null;
 
 		try {
 			Statement stmt = connection.getConnection().createStatement();
 
-			System.out.println(Sql);
-
 			rs = stmt.executeQuery(Sql);
 
 			if (rs.next()) {
-				UserProfileModel c1 = new UserProfileModel();
+				CustomerProfileModel c1 = new CustomerProfileModel();
 				// set result set to the text fields
 				c1.settxtLname(rs.getString(1));
 				c1.settxtFname(rs.getString(2));
@@ -58,7 +56,7 @@ public class UserProfileViewDao extends DBConnect {
 	}
 
 	// Update the database with the user profile details
-	public UserProfileModel update(String txtUsername, UserProfileModel customer) {
+	public CustomerProfileModel update(String txtUsername, CustomerProfileModel customer) {
 		// Query to update the customer info in database
 		String query = "Update ars_customers1 set LNAME=?, FNAME =?, DOB=?, EMAIL=?, PHONE=?, ADDRESS=?, CITY=?, STATE=?, ZIPCODE=? "
 				+ "where UNAME = " + "'" + txtUsername + "'";

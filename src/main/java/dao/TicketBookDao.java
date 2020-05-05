@@ -30,7 +30,7 @@ public class TicketBookDao extends DBConnect {
 			Statement stmt = connection.getConnection().createStatement();
 
 			rs = stmt.executeQuery(sql);
-			System.out.println(sql);
+
 			if (rs.next()) {
 				TicketBookModel B1 = new TicketBookModel();
 				// set result set to the text fields
@@ -63,7 +63,6 @@ public class TicketBookDao extends DBConnect {
 			// Use sql prepared statement for dynamic sql
 			PreparedStatement statement = connection.getConnection().prepareStatement(sql1,
 					Statement.RETURN_GENERATED_KEYS);
-			System.out.println(sql1);
 			// Set the parameters to the query
 			statement.setString(1, user_name);
 			statement.setString(2, last_name);
@@ -101,7 +100,6 @@ public class TicketBookDao extends DBConnect {
 			// Use sql prepared statement for dynamic sql
 			PreparedStatement statement = connection.getConnection().prepareStatement(sql2,
 					Statement.RETURN_GENERATED_KEYS);
-			System.out.println(sql2);
 			// Set the parameters to the query
 			statement.setString(1, last_name);
 			statement.setString(2, from);

@@ -11,15 +11,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import models.UserProfileModel;
+import models.CustomerProfileModel;
 import models.LoginModel;
 
-public class UserProfileUpdateDao extends DBConnect {
+public class CustomerProfileUpdateDao extends DBConnect {
 	// Declare DB objects
 	DBConnect connection = new DBConnect();
 
 	// method to create user/admin by user
-	public void CreateDetails(UserProfileModel customer) {
+	public void CreateDetails(CustomerProfileModel customer) {
 		// Query to insert new customer into database
 		String sql1 = "INSERT INTO ars_customers1(UNAME, LNAME, FNAME, DOB, EMAIL, PHONE, ADDRESS, CITY, STATE, ZIPCODE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -27,7 +27,7 @@ public class UserProfileUpdateDao extends DBConnect {
 		try {
 			PreparedStatement statement = connection.getConnection().prepareStatement(sql1,
 					Statement.RETURN_GENERATED_KEYS);
-			System.out.println(sql1);
+
 			// Set the parameters to the query
 			statement.setString(1, customer.gettxtUsername());
 			statement.setString(2, customer.gettxtLname());
@@ -58,7 +58,7 @@ public class UserProfileUpdateDao extends DBConnect {
 		try {
 			PreparedStatement statement1 = connection.getConnection().prepareStatement(sql2,
 					Statement.RETURN_GENERATED_KEYS);
-			System.out.println(sql2);
+
 			// Set the parameters to the query
 			statement1.setString(1, user.gettxtUsername());
 			statement1.setString(2, user.gettxtPassword());

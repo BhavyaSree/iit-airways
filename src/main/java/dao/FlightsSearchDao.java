@@ -35,9 +35,6 @@ public class FlightsSearchDao extends DBConnect {
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date1 = new Date();
-		System.out.println(dateFormat.format(date1)); 
-		
-
 
 		String Sql = "Select FROM_DES, TO_DES, DATE, TIME, CLASS, PRICE  from ars_flights where FROM_DES = ? AND TO_DES = ? "
 				+ " AND DATE = ? AND DATE >= ' " +dateFormat.format(date1)+ "' AND CLASS = ? AND AVAILABLE = 'YES' ORDER BY DATE, TIME";
@@ -45,7 +42,6 @@ public class FlightsSearchDao extends DBConnect {
 		try {
 			PreparedStatement statement = connection.getConnection().prepareStatement(Sql,
 					Statement.RETURN_GENERATED_KEYS);
-			System.out.println(Sql);
 			System.out.println("Fetching Flights details");
 
 			statement.setString(1, from_place);

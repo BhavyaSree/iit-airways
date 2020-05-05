@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
          <image>
@@ -31,27 +31,27 @@
       <Button layoutX="52.0" layoutY="233.0" mnemonicParsing="false" onAction="#bookticket" prefHeight="25.0" prefWidth="120.0" text="BOOK TICKET" />
       <Pane fx:id="pane1" layoutX="216.0" layoutY="107.0" prefHeight="411.0" prefWidth="545.0" visible="false">
          <children>
-            <Label layoutX="26.0" layoutY="19.0" text="First Name:">
+            <Label layoutX="26.0" layoutY="19.0" text="First Name *:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="302.0" layoutY="21.0" text="Last Name:">
+            <Label layoutX="302.0" layoutY="21.0" text="Last Name *:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="63.0" text="Date of Birth:">
+            <Label layoutX="25.0" layoutY="63.0" text="Date of Birth *:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="26.0" layoutY="105.0" text="Email:">
+            <Label layoutX="26.0" layoutY="105.0" text="Email *:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="26.0" layoutY="148.0" text="Phone number:">
+            <Label layoutX="26.0" layoutY="148.0" text="Phone number *:">
                <font>
                   <Font size="14.0" />
                </font>

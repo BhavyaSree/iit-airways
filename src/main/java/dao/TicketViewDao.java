@@ -24,7 +24,7 @@ public class TicketViewDao extends DBConnect {
 
 		try {
 			Statement stmt1 = connection.getConnection().createStatement();
-			System.out.println(Sql1);
+
 			rs1 = stmt1.executeQuery(Sql1);
 			Integer Bookid;
 			if (rs1.next()) { // get the latest booking id from data base for user
@@ -41,7 +41,6 @@ public class TicketViewDao extends DBConnect {
 			try {
 				Statement stmt = connection.getConnection().createStatement();
 
-				System.out.println(Sql);
 
 				rs = stmt.executeQuery(Sql);
 				if (rs.next()) {

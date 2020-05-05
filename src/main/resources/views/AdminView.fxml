@@ -92,7 +92,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="26.0" layoutY="105.0" text="Email:">
+            <Label layoutX="26.0" layoutY="105.0" text="Email *:">
                <font>
                   <Font size="14.0" />
                </font>
@@ -161,7 +161,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="26.0" layoutY="105.0" text="Email:">
+            <Label layoutX="26.0" layoutY="105.0" text="Email *:">
                <font>
                   <Font size="14.0" />
                </font>

@@ -20,8 +20,8 @@ import javafx.application.Platform;
 import application.Main;
 import dao.AdminProfileUpdateDao;
 import dao.AdminHistoryDao;
-import dao.UserProfileUpdateDao;
-import dao.UserProfileViewDao;
+import dao.CustomerProfileUpdateDao;
+import dao.CustomerProfileViewDao;
 import dao.FlightsSearchDao;
 import dao.TicketBookDao;
 import javafx.collections.FXCollections;
@@ -45,7 +45,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.collections.*;
 import models.AdminProfileModel;
-import models.UserProfileModel;
+import models.CustomerProfileModel;
 import models.FlightSearchModel;
 import models.HistoryModel;
 import models.TicketBookModel;
@@ -172,7 +172,7 @@ public class AdminController implements Initializable {
 	private static String T_last_name; // set global object Last name from in history view
 
 	// set global user name object
-	static UserProfileModel c = new UserProfileModel();
+	static CustomerProfileModel c = new CustomerProfileModel();
 	static String user_name = c.gettxtUsername();
 
 	// Setting choice box drop down values for from destination, to destination and
@@ -313,7 +313,6 @@ public class AdminController implements Initializable {
 		pane2.setVisible(false);
 		pane1.setVisible(true); // set other panes as invisible and set profile screen visible
 		pane5.setVisible(false);
-		System.out.println(user_name);
 
 		// Create a DAO instance of the model
 		AdminProfileUpdateDao AdminDao = new AdminProfileUpdateDao();
@@ -334,7 +333,7 @@ public class AdminController implements Initializable {
 		}
 	}
 
-	// method for admin to lastet view history details when clicked on view history
+	// method for admin to latest view history details when clicked on view history
 	// button
 	public void viewhistory() {
 		pane4.setVisible(false);
@@ -395,13 +394,6 @@ public class AdminController implements Initializable {
 		TicketBookDao T = new TicketBookDao();
 
 		try {
-			System.out.println(T_last_name);
-			System.out.println(T_FROM);
-			System.out.println(T_TO);
-			System.out.println(T_DATE);
-			System.out.println(T_TIME);
-			System.out.println(T_CLASS);
-			System.out.println(T_BOOKID);
 
 			T.deleteTicket(T_last_name, T_FROM, T_TO, T_DATE, T_TIME, T_CLASS, T_BOOKID);
 
@@ -443,17 +435,6 @@ public class AdminController implements Initializable {
 						phone = Long.parseLong(ticket.getPhone());
 
 					}
-
-					System.out.println(last_name);
-					System.out.println(first_name);
-					System.out.println(email);
-					System.out.println(phone);
-					System.out.println(F_FROM);
-					System.out.println(F_TO);
-					System.out.println(F_DATE);
-					System.out.println(F_TIME);
-					System.out.println(F_CLASS);
-					System.out.println(F_PRICE);
 
 					T1.BookTicket(user_name, last_name, first_name, email, phone, F_FROM, F_TO, F_DATE, F_TIME, F_CLASS,
 							F_PRICE);
@@ -537,7 +518,7 @@ public class AdminController implements Initializable {
 	// method to update the profile when clicked on update button in view profile
 	// screen
 	public void update() {
-		
+
 		lblErrorU.setText("");
 		// Extract the data from text fields
 
@@ -561,9 +542,13 @@ public class AdminController implements Initializable {
 		}
 
 		String EMAIL = this.atxtEmail.getText();
+		if (EMAIL == null || EMAIL.trim().equals("")) {
+			lblErrorU.setText("Error: Email should not be empty");
+			return;
+		}
 
 		String PHONE = this.atxtPhone.getText();
-		if ((PHONE == null)|| (PHONE.trim().equals("")) ||(!PHONE.matches("\\d*"))) {
+		if ((PHONE == null) || (PHONE.trim().equals("")) || (!PHONE.matches("\\d*"))) {
 			lblErrorU.setText("Error: Phone number should be a number");
 			return;
 		}
@@ -574,7 +559,7 @@ public class AdminController implements Initializable {
 		String ZIPCODE = this.atxtZipcode.getText();
 
 		// Create a Customer object to set the values
-		UserProfileModel customer = new UserProfileModel();
+		CustomerProfileModel customer = new CustomerProfileModel();
 
 		customer.settxtLname(LNAME);
 		customer.settxtFname(FNAME);
@@ -587,7 +572,7 @@ public class AdminController implements Initializable {
 		customer.settxtZipcode(ZIPCODE);
 
 		// Create data access instance for customerView object
-		UserProfileViewDao c1 = new UserProfileViewDao();
+		CustomerProfileViewDao c1 = new CustomerProfileViewDao();
 		c1.update(user_name, customer);
 		// alert message to show that profile has been updated successfully
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -601,24 +586,23 @@ public class AdminController implements Initializable {
 
 	// method to allow admin to create an admin or user when clicked on create
 	// button
-	
+
 	private String hashText(String password) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 		md.update(password.getBytes());
 
 		byte byteData[] = md.digest();
 
-		//convert the byte to hex format method 1
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < byteData.length; i++) {
-         sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-        }
+		// convert the byte to hex format method 1
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < byteData.length; i++) {
+			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+		}
 		return sb.toString();
 	}
-	
+
 	public void create() {
-		
-		
+
 		lblErrorC.setText("");
 		// Extract the data from the text fields of view
 		// validating the given inputs
@@ -641,24 +625,24 @@ public class AdminController implements Initializable {
 		}
 
 		String EMAIL = this.txtEmail.getText();
+		if (EMAIL == null || EMAIL.trim().equals("")) {
+			lblErrorC.setText("Error: Email should not be empty");
+			return;
+		}
 
 		String PHONE = this.txtPhone.getText();
-		if ((PHONE == null)|| (PHONE.trim().equals("")) ||(!PHONE.matches("\\d*"))) {
+		if ((PHONE == null) || (PHONE.trim().equals("")) || (!PHONE.matches("\\d*"))) {
 			lblErrorC.setText("Error: Phone number should be a number");
 			return;
 		}
 
-
 		String ADDRESS = this.txtAddress.getText();
-
 
 		String CITY = this.txtCity.getText();
 
 		String STATE = this.txtState.getText();
 
-
 		String ZIPCODE = this.txtZipcode.getText();
-
 
 		String USERTYPE = (String) this.UserType.getValue();
 
@@ -675,7 +659,7 @@ public class AdminController implements Initializable {
 		}
 
 		// Create Customer Object
-		UserProfileModel customer = new UserProfileModel();
+		CustomerProfileModel customer = new CustomerProfileModel();
 		// Create User Object
 		LoginModel user = new LoginModel();
 
@@ -692,17 +676,14 @@ public class AdminController implements Initializable {
 		customer.settxtZipcode(ZIPCODE);
 		user.settxtUsername(USERNAME);
 		user.setUserType(USERTYPE);
-		try 
-		{
+		try {
 			user.settxtPassword(hashText(PASSWORD));
-		} catch (NoSuchAlgorithmException e1) 
-		{
+		} catch (NoSuchAlgorithmException e1) {
 			System.out.println("Error while setting hash password" + e1.getMessage());
 		}
-		
 
 		// Create data access instance for customer object
-		UserProfileUpdateDao C1 = new UserProfileUpdateDao();
+		CustomerProfileUpdateDao C1 = new CustomerProfileUpdateDao();
 		C1.CreateDetails(customer);
 		C1.CreateUser(user);
 

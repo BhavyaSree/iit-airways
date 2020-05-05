@@ -18,7 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import models.UserProfileModel;
+import models.CustomerProfileModel;
 import models.TicketViewModel;
 
 public class TicketController {
@@ -49,13 +49,13 @@ public class TicketController {
 	@FXML
 	private Pane pane1; // pane 1 which shows ticket details
 
-	static UserProfileModel c = new UserProfileModel();
+	static CustomerProfileModel c = new CustomerProfileModel();
 	static String user_name = c.gettxtUsername();
 
 	// set user name
 	public static void setUsername(String username) {
 		user_name = username;
-		System.out.println("Welcome User: " + user_name + "!");
+		// System.out.println("Welcome User: " + user_name + "!");
 	}
 
 	// method to view ticket details that was recently booked by user or admin when

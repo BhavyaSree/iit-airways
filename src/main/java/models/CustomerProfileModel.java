@@ -9,7 +9,7 @@ package models;
 
 import java.time.LocalDate;
 
-public class UserProfileModel {
+public class CustomerProfileModel {
 
 	// instance fields
 	private String txtUsername;
