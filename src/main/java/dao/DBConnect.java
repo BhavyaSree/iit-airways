@@ -18,18 +18,9 @@ public class DBConnect {
 		return connection;
 	}
 
-	/*
-	 * static final String DB_URL =
-	 * "jdbc:mysql://www.papademas.net:3307/510labs?autoReconnect=true&useSSL=false";
-	 * static final String USER = "db510", PASS = "510"; // login credentials
-	 * 
-	 * public Connection connect() throws SQLException { return
-	 * DriverManager.getConnection(DB_URL, USER, PASS); // error to display if the
-	 * connection fails }
-	 */
 
-	private static String url = "jdbc:mysql://www.papademas.net:3307/510labs?autoReconnect=true&useSSL=false";
-	private static String username = "db510";
+	private static String url = "jdbc:mysql://www.papademas.net:3307/510fp?autoReconnect=true&useSSL=false";
+	private static String username = "fp510";
 	private static String password = "510";
 
 	// method to establish connection

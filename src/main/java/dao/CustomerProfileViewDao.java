@@ -22,7 +22,7 @@ public class CustomerProfileViewDao extends DBConnect {
 
 	// method to fetch the user profile details from table
 	public ArrayList<CustomerProfileModel> getCustomer(String txtUsername) {
-		String Sql = "Select LNAME, FNAME, DOB, EMAIL, PHONE, ADDRESS, CITY, STATE, ZIPCODE from ars_customers1 where UNAME = "
+		String Sql = "Select LNAME, FNAME, DOB, EMAIL, PHONE, ADDRESS, CITY, STATE, ZIPCODE from itr_user_details where UNAME = "
 				+ "'" + txtUsername + "'";
 		ArrayList<CustomerProfileModel> customer = new ArrayList<CustomerProfileModel>();
 		ResultSet rs = null;
@@ -58,14 +58,13 @@ public class CustomerProfileViewDao extends DBConnect {
 	// Update the database with the user profile details
 	public CustomerProfileModel update(String txtUsername, CustomerProfileModel customer) {
 		// Query to update the customer info in database
-		String query = "Update ars_customers1 set LNAME=?, FNAME =?, DOB=?, EMAIL=?, PHONE=?, ADDRESS=?, CITY=?, STATE=?, ZIPCODE=? "
+		String query = "Update itr_user_details set LNAME=?, FNAME =?, DOB=?, EMAIL=?, PHONE=?, ADDRESS=?, CITY=?, STATE=?, ZIPCODE=? "
 				+ "where UNAME = " + "'" + txtUsername + "'";
 
 		// Use sql prepared statement for dynamic sql
 		try {
 			PreparedStatement statement = connection.getConnection().prepareStatement(query,
 					Statement.RETURN_GENERATED_KEYS);
-			System.out.println(query);
 			statement.setString(1, customer.gettxtLname());
 			statement.setString(2, customer.gettxtFname());
 			statement.setDate(3, java.sql.Date.valueOf(customer.gettxtDob()));

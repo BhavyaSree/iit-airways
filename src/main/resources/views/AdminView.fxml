@@ -59,7 +59,7 @@
             </Label>
             <ChoiceBox fx:id="From" layoutX="7.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
             <DatePicker fx:id="Date" layoutX="304.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
-            <Label layoutX="303.0" layoutY="12.0" text="Date:">
+            <Label layoutX="303.0" layoutY="12.0" text="Date *:">
                <font>
                   <Font size="14.0" />
                </font>
@@ -73,6 +73,11 @@
             <ChoiceBox fx:id="Class" layoutX="451.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
             <Button layoutX="234.0" layoutY="70.0" mnemonicParsing="false" onAction="#search" prefWidth="100.0" text="SEARCH" />
             <Button fx:id="bookBtn" layoutX="240.0" layoutY="438.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
+            <Label fx:id="lblError1" layoutX="352.0" layoutY="75.0" prefHeight="17.0" prefWidth="238.0" style="-fx-text-fill: Red;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane fx:id="pane1" layoutX="226.0" layoutY="96.0" prefHeight="428.0" prefWidth="545.0" visible="false">

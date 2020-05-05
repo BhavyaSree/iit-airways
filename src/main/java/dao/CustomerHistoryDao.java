@@ -26,7 +26,7 @@ public class CustomerHistoryDao extends DBConnect {
 
 		ResultSet rs = null;
 
-		String Sql = "Select FROMDEST, TODEST, TRAVELDATE, TRAVELTIME, CLASS, BOOKINGID from ars_ticketdetails where UNAME = "
+		String Sql = "Select FROMDEST, TODEST, TRAVELDATE, TRAVELTIME, CLASS, BOOKINGID from itr_history where UNAME = "
 				+ "'" + user_name + "'  ORDER BY TRAVELDATE, TRAVELTIME ";
 
 		try {

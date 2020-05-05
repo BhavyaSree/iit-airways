@@ -21,7 +21,7 @@ public class TicketBookDao extends DBConnect {
 	// method to get booked details from data base and displaying
 	public ArrayList<TicketBookModel> getCustomer(String user_name) {
 		// Query to select customer details
-		String sql = "SELECT LNAME, FNAME, EMAIL, PHONE FROM ARS_CUSTOMERS1 WHERE UNAME = " + "'" + user_name + "'";
+		String sql = "SELECT LNAME, FNAME, EMAIL, PHONE FROM itr_user_details WHERE UNAME = " + "'" + user_name + "'";
 
 		ArrayList<TicketBookModel> TBook = new ArrayList<TicketBookModel>();
 		ResultSet rs = null;
@@ -56,7 +56,7 @@ public class TicketBookDao extends DBConnect {
 	public void BookTicket(String user_name, String last_name, String first_name, String email, long phone, String from,
 			String to, String date, String time, String class1, String price) {
 		// Query to insert new customer into database
-		String sql1 = "INSERT INTO ars_ticketdetails(UNAME, LNAME, FNAME, EMAIL, PHONE, FROMDEST, TODEST, TRAVELDATE, TRAVELTIME,"
+		String sql1 = "INSERT INTO itr_history(UNAME, LNAME, FNAME, EMAIL, PHONE, FROMDEST, TODEST, TRAVELDATE, TRAVELTIME,"
 				+ "CLASS, PRICE, STATUS) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
@@ -93,7 +93,7 @@ public class TicketBookDao extends DBConnect {
 	public void deleteTicket(String last_name, String from, String to, String date, String time, String class1,
 			String bookId) {
 		// Query to insert new customer into database
-		String sql2 = "DELETE FROM ARS_TICKETDETAILS WHERE LNAME = ? AND FROMDEST= ? AND TODEST = ? AND TRAVELDATE = ? AND +"
+		String sql2 = "DELETE FROM itr_history WHERE LNAME = ? AND FROMDEST= ? AND TODEST = ? AND TRAVELDATE = ? AND +"
 				+ "TRAVELTIME = ? AND CLASS = ?  AND BOOKINGID = ?;";
 
 		try {

@@ -42,7 +42,7 @@
             <Font name="System Italic" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="159.0" prefHeight="94.0" prefWidth="380.0" text="Book flights &amp; fly with Illinois Tech Airways. Receive exclusive air fares and travel in style accross United States with our award-winning airline." textAlignment="JUSTIFY" wrapText="true">
+      <Label layoutX="50.0" layoutY="159.0" prefHeight="144.0" prefWidth="380.0" text="Book flights &amp; fly with Illinois Tech Airways. Receive exclusive air fares and travel in style accross United States with our award-winning airline. &#10;&#10;&#10;As of now, we have flights from Chicago to Orlando, New York, Seattle and Dallas from 10th May 2020 to 14th May 2020.&#10;&#10;" textAlignment="JUSTIFY" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>

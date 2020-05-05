@@ -21,7 +21,7 @@ public class CustomerProfileUpdateDao extends DBConnect {
 	// method to create user/admin by user
 	public void CreateDetails(CustomerProfileModel customer) {
 		// Query to insert new customer into database
-		String sql1 = "INSERT INTO ars_customers1(UNAME, LNAME, FNAME, DOB, EMAIL, PHONE, ADDRESS, CITY, STATE, ZIPCODE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql1 = "INSERT INTO itr_user_details(UNAME, LNAME, FNAME, DOB, EMAIL, PHONE, ADDRESS, CITY, STATE, ZIPCODE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		// Use sql prepared statement for dynamic sql
 		try {
@@ -53,7 +53,7 @@ public class CustomerProfileUpdateDao extends DBConnect {
 
 	// method to create login details in db
 	public void CreateUser(LoginModel user) {
-		String sql2 = "INSERT INTO ars_users(username, password, admin) VALUES (?, ?, ?)";
+		String sql2 = "INSERT INTO itr_users(username, password, admin) VALUES (?, ?, ?)";
 
 		try {
 			PreparedStatement statement1 = connection.getConnection().prepareStatement(sql2,

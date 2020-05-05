@@ -112,8 +112,13 @@
             </TableView>
          </children>
       </Pane>
-      <Pane fx:id="pane3" layoutX="175.0" layoutY="79.0" prefHeight="482.0" prefWidth="615.0">
+      <Pane fx:id="pane3" layoutX="175.0" layoutY="81.0" prefHeight="480.0" prefWidth="615.0">
          <children>
+            <Label fx:id="lblError1" layoutX="350.0" layoutY="75.0" prefHeight="18.0" prefWidth="246.0" style="-fx-text-fill: Red;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <Label layoutX="7.0" layoutY="11.0" text="From:">
                <font>
                   <Font size="14.0" />
@@ -126,7 +131,7 @@
             </Label>
             <ChoiceBox fx:id="From" layoutX="7.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
             <DatePicker fx:id="Date" layoutX="305.0" layoutY="34.0" prefHeight="25.0" prefWidth="126.0" />
-            <Label layoutX="304.0" layoutY="12.0" text="Date:">
+            <Label layoutX="304.0" layoutY="12.0" text="Date *:">
                <font>
                   <Font size="14.0" />
                </font>

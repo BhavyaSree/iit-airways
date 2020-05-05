@@ -19,7 +19,7 @@ public class TicketViewDao extends DBConnect {
 
 	// Fetch the booked ticket data from table
 	public ArrayList<TicketViewModel> getCustomer(String txtUsername) {
-		String Sql1 = "Select MAX(BOOKINGID) from ars_ticketdetails  where UNAME = " + "'" + txtUsername + "'";
+		String Sql1 = "Select MAX(BOOKINGID) from itr_history where UNAME = " + "'" + txtUsername + "'";
 		ResultSet rs1 = null;
 
 		try {
@@ -33,7 +33,7 @@ public class TicketViewDao extends DBConnect {
 				Bookid = 0;
 			}
 
-			String Sql = "Select LNAME,FNAME,EMAIL,PHONE,FROMDEST,TODEST,TRAVELDATE,TRAVELTIME,CLASS,PRICE,STATUS,BOOKINGID from ars_ticketdetails  where BOOKINGID = "
+			String Sql = "Select LNAME,FNAME,EMAIL,PHONE,FROMDEST,TODEST,TRAVELDATE,TRAVELTIME,CLASS,PRICE,STATUS,BOOKINGID from itr_history where BOOKINGID = "
 					+ "'" + Bookid + "'";
 			ArrayList<TicketViewModel> ticket = new ArrayList<TicketViewModel>();
 			ResultSet rs = null;

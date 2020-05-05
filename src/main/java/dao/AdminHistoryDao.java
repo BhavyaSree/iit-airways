@@ -25,7 +25,7 @@ public class AdminHistoryDao extends DBConnect {
 
 		ResultSet rs = null;
 
-		String Sql = "Select LNAME, FROMDEST, TODEST, TRAVELDATE, TRAVELTIME, CLASS, BOOKINGID from ars_ticketdetails order by TRAVELDATE, TRAVELTIME ,BOOKINGID;";
+		String Sql = "Select LNAME, FROMDEST, TODEST, TRAVELDATE, TRAVELTIME, CLASS, BOOKINGID from itr_history order by TRAVELDATE, TRAVELTIME ,BOOKINGID;";
 
 		try {
 			Statement stmt = connection.getConnection().createStatement();

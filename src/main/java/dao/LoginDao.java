@@ -26,7 +26,7 @@ public class LoginDao extends DBConnect {
 	// method to validate login credentials entered
 	public Boolean getCredentials(String username, String password) {
 
-		String query = "SELECT * FROM ars_users WHERE username = ? and password = ?;";
+		String query = "SELECT * FROM itr_users WHERE username = ? and password = ?;";
 		try (PreparedStatement stmt = connection.prepareStatement(query)) {
 			//System.out.println(query);
 			stmt.setString(1, username);

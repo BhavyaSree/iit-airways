@@ -108,6 +108,8 @@ public class AdminController implements Initializable {
 	@FXML
 	private Label lblErrorC;
 	@FXML
+	private Label lblError1;
+	@FXML
 	private ChoiceBox<String> UserType; // choice box for user type-admin/user
 	@FXML
 	private ChoiceBox<String> From; // choice box for travel from destination
@@ -178,12 +180,10 @@ public class AdminController implements Initializable {
 	// Setting choice box drop down values for from destination, to destination and
 	// class and user type-admin/user
 	final ObservableList<String> UserTypeL = FXCollections.observableArrayList("User", "Admin");
-	final ObservableList<String> FromL = FXCollections.observableArrayList("Chicago", "New York", "Seattle", "Orlando",
-			"Dallas", "California");
-	final ObservableList<String> ToL = FXCollections.observableArrayList("Chicago", "New York", "Seattle", "Orlando",
-			"Dallas", "California");
-	final ObservableList<String> ClassL = FXCollections.observableArrayList("Economy", "Premium Economy", "Business",
-			"First Class");
+	final ObservableList<String> FromL = FXCollections.observableArrayList("Chicago");
+	final ObservableList<String> ToL = FXCollections.observableArrayList("New York", "Seattle", "Orlando",
+			"Dallas");
+	final ObservableList<String> ClassL = FXCollections.observableArrayList("Economy", "Business");
 
 	// Initialize the admin controller
 	public void initialize(URL location, ResourceBundle resources) {
@@ -475,7 +475,15 @@ public class AdminController implements Initializable {
 
 		String F_FROM = this.From.getValue();
 		String F_TO = this.To.getValue();
-		String F_DATE = this.Date.getValue().toString();
+
+		LocalDate F_DATE = this.Date.getValue();
+		if(F_DATE == null) {
+			lblError1.setText("Please Enter the Date!");
+			return;
+		}
+		lblError1.setText("");
+		String F_DATE1 = this.Date.getValue().toString();
+		
 		String F_CLASS = this.Class.getValue();
 
 		// Create data access instance for Flights object
@@ -483,7 +491,7 @@ public class AdminController implements Initializable {
 		// check if there are any flights for selected criteria and display the details
 		// if not throw an alert to change search criteria
 		try {
-			tblFlights.getItems().setAll(F1.getFlights(F_FROM, F_TO, F_DATE, F_CLASS));
+			tblFlights.getItems().setAll(F1.getFlights(F_FROM, F_TO, F_DATE1, F_CLASS));
 			if (tblFlights.getItems().isEmpty()) {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Alert Message");

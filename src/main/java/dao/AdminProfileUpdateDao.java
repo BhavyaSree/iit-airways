@@ -23,7 +23,7 @@ public class AdminProfileUpdateDao extends DBConnect {
 	// Method to fetch admin profile data from table
 	public ArrayList<AdminProfileModel> getCustomer(String atxtUsername) { // passing user name, to get the details of
 																			// the logged in user
-		String Sql = "Select LNAME, FNAME, DOB, EMAIL, PHONE, ADDRESS, CITY, STATE, ZIPCODE from ars_customers1 where UNAME = "
+		String Sql = "Select LNAME, FNAME, DOB, EMAIL, PHONE, ADDRESS, CITY, STATE, ZIPCODE from itr_user_details where UNAME = "
 				+ "'" + atxtUsername + "'";
 		ArrayList<AdminProfileModel> admin = new ArrayList<AdminProfileModel>();
 		ResultSet rs = null;
@@ -60,7 +60,7 @@ public class AdminProfileUpdateDao extends DBConnect {
 	// Update the database after the profile is updated by user or admin
 	public AdminProfileModel update(String txtUsername, AdminProfileModel admin) {
 		// Query to update the customer info in database
-		String query = "Update ars_customers1 set LNAME=?, FNAME =?, DOB=?, EMAIL=?, PHONE=?, ADDRESS=?, CITY=?, STATE=?, ZIPCODE=? "
+		String query = "Update itr_user_details set LNAME=?, FNAME =?, DOB=?, EMAIL=?, PHONE=?, ADDRESS=?, CITY=?, STATE=?, ZIPCODE=? "
 				+ "where UNAME = " + "'" + txtUsername + "'";
 
 
