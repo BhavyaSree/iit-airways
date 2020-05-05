@@ -16,7 +16,7 @@
             <Image url="@flight_plane_sky_color_line_61872_1920x1080.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="157.0" layoutY="67.0" prefHeight="50.0" prefWidth="500.0" text="    Illinois Tech Airways">
+      <Label layoutX="200.0" layoutY="45.0" prefHeight="50.0" prefWidth="500.0" text="    Illinois Tech Airways">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
@@ -39,7 +39,7 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Label layoutX="135.0" layoutY="159.0" text="Welcome to Illinois Tech Airways Login page. Please enter your username and password.">
+      <Label layoutX="163.0" layoutY="115.0" text="Welcome to Illinois Tech Airways Login page. Please enter your username and password.">
          <font>
             <Font size="14.0" />
          </font>

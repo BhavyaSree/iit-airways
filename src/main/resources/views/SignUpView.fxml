@@ -22,25 +22,25 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="70.0" layoutY="115.0" text="Last Name">
+      <Label layoutX="70.0" layoutY="115.0" text="Last Name *">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <TextField fx:id="txtLname" layoutX="185.0" layoutY="115.0" prefWidth="200.0" />
-      <Label layoutX="70.0" layoutY="165.0" text="First Name">
+      <Label layoutX="70.0" layoutY="165.0" text="First Name *">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <TextField fx:id="txtFname" layoutX="185.0" layoutY="165.0" prefWidth="200.0" />
-      <Label layoutX="70.0" layoutY="215.0" text="Date of Birth">
+      <Label layoutX="70.0" layoutY="215.0" text="Date of Birth *">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <DatePicker fx:id="txtDob" layoutX="185.0" layoutY="215.0" prefWidth="200.0" />
-      <Label layoutX="70.0" layoutY="265.0" text="Phone No">
+      <Label layoutX="70.0" layoutY="265.0" text="Phone No *">
          <font>
             <Font size="15.0" />
          </font>
@@ -76,13 +76,13 @@
          </font>
       </Label>
       <TextField fx:id="txtZipcode" layoutX="185.0" layoutY="515.0" prefWidth="200.0" />
-      <Label layoutX="470.0" layoutY="229.0" text="User Name">
+      <Label layoutX="470.0" layoutY="229.0" text="User Name *">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <TextField fx:id="txtUsername" layoutX="573.0" layoutY="230.0" prefWidth="200.0" />
-      <Label layoutX="470.0" layoutY="287.0" text="Password">
+      <Label layoutX="470.0" layoutY="287.0" text="Password *">
          <font>
             <Font size="15.0" />
          </font>
@@ -98,5 +98,10 @@
             <Font size="15.0" />
          </font>
       </Button>
+      <Label fx:id="lblError" layoutX="255.0" layoutY="73.0" prefHeight="20.0" prefWidth="300.0" style="-fx-text-fill: Red;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

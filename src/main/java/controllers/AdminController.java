@@ -32,6 +32,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -102,6 +103,10 @@ public class AdminController implements Initializable {
 	private TextField txtUsername; // set user name text field
 	@FXML
 	private TextField txtPassword; // set password text field
+	@FXML
+	private Label lblErrorU;
+	@FXML
+	private Label lblErrorC;
 	@FXML
 	private ChoiceBox<String> UserType; // choice box for user type-admin/user
 	@FXML
@@ -532,33 +537,37 @@ public class AdminController implements Initializable {
 	// method to update the profile when clicked on update button in view profile
 	// screen
 	public void update() {
+		
+		lblErrorU.setText("");
 		// Extract the data from text fields
 
 		// Validate the data and check if all the value are entered
 		String LNAME = this.atxtLname.getText();
 		if (LNAME == null || LNAME.trim().equals("")) {
+			lblErrorU.setText("Error: Last Name should not be empty");
 			return;
 		}
 
 		String FNAME = this.atxtFname.getText();
 		if (FNAME == null || FNAME.trim().equals("")) {
+			lblErrorU.setText("Error: First Name should not be empty");
 			return;
 		}
 
 		LocalDate DOB = this.atxtDob.getValue();
 		if (DOB == null) {
+			lblErrorU.setText("Error: Date of Birth should not be empty");
 			return;
 		}
 
 		String EMAIL = this.atxtEmail.getText();
-		if (EMAIL == null || EMAIL.trim().equals("")) {
+
+		String PHONE = this.atxtPhone.getText();
+		if ((PHONE == null)|| (PHONE.trim().equals("")) ||(!PHONE.matches("\\d*"))) {
+			lblErrorU.setText("Error: Phone number should be a number");
 			return;
 		}
 
-		String PHONE = this.atxtPhone.getText();
-		if (PHONE == null || PHONE.trim().equals("")) {
-			return;
-		}
 		String ADDRESS = this.atxtAddress.getText();
 		String CITY = this.atxtCity.getText();
 		String STATE = this.atxtState.getText();
@@ -608,62 +617,60 @@ public class AdminController implements Initializable {
 	}
 	
 	public void create() {
+		
+		
+		lblErrorC.setText("");
 		// Extract the data from the text fields of view
 		// validating the given inputs
 		String LNAME = this.txtLname.getText();
 		if (LNAME == null || LNAME.trim().equals("")) {
+			lblErrorC.setText("Error: Last Name should not be empty");
 			return;
 		}
 
 		String FNAME = this.txtFname.getText();
 		if (FNAME == null || FNAME.trim().equals("")) {
+			lblErrorC.setText("Error: First Name should not be empty");
 			return;
 		}
 
 		LocalDate DOB = this.txtDob.getValue();
 		if (DOB == null) {
+			lblErrorC.setText("Error: Date of Birth should not be empty");
 			return;
 		}
 
 		String EMAIL = this.txtEmail.getText();
-		if (EMAIL == null || EMAIL.trim().equals("")) {
-			return;
-		}
 
 		String PHONE = this.txtPhone.getText();
-		if (PHONE == null || PHONE.trim().equals("")) {
+		if ((PHONE == null)|| (PHONE.trim().equals("")) ||(!PHONE.matches("\\d*"))) {
+			lblErrorC.setText("Error: Phone number should be a number");
 			return;
 		}
+
 
 		String ADDRESS = this.txtAddress.getText();
-		if (ADDRESS == null || ADDRESS.trim().equals("")) {
-			return;
-		}
+
 
 		String CITY = this.txtCity.getText();
-		if (CITY == null || CITY.trim().equals("")) {
-			return;
-		}
-		System.out.println(CITY);
+
 		String STATE = this.txtState.getText();
-		if (STATE == null || STATE.trim().equals("")) {
-			return;
-		}
+
 
 		String ZIPCODE = this.txtZipcode.getText();
-		if (ZIPCODE == null || ZIPCODE.trim().equals("")) {
-			return;
-		}
+
 
 		String USERTYPE = (String) this.UserType.getValue();
 
 		String USERNAME = this.txtUsername.getText();
 		if (USERNAME == null || USERNAME.trim().equals("")) {
+			lblErrorC.setText("Error: User Name should not be empty");
 			return;
 		}
 
 		String PASSWORD = this.txtPassword.getText();
 		if (PASSWORD == null || PASSWORD.trim().equals("")) {
+			lblErrorC.setText("Error: Password should not be empty");
 			return;
 		}
 

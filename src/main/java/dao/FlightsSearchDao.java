@@ -7,12 +7,18 @@
 
 package dao;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import models.FlightSearchModel;
+
 
 public class FlightsSearchDao extends DBConnect {
 
@@ -26,9 +32,15 @@ public class FlightsSearchDao extends DBConnect {
 		ArrayList<FlightSearchModel> flights = new ArrayList<FlightSearchModel>();
 
 		ResultSet rs = null;
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = new Date();
+		System.out.println(dateFormat.format(date1)); 
+		
+
 
 		String Sql = "Select FROM_DES, TO_DES, DATE, TIME, CLASS, PRICE  from ars_flights where FROM_DES = ? AND TO_DES = ? "
-				+ " AND DATE = ? AND CLASS = ? AND AVAILABLE = 'YES' ORDER BY DATE, TIME";
+				+ " AND DATE = ? AND DATE >= ' " +dateFormat.format(date1)+ "' AND CLASS = ? AND AVAILABLE = 'YES' ORDER BY DATE, TIME";
 
 		try {
 			PreparedStatement statement = connection.getConnection().prepareStatement(Sql,

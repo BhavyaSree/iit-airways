@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
@@ -60,6 +61,9 @@ public class SignUpController {
 	@FXML
 	private TextField txtPassword;
 	
+	@FXML
+	private Label lblError;
+	
 	
 	private String hashText(String password) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -79,30 +83,32 @@ public class SignUpController {
 	// Method to submit the data to database
 	public void submit() 
 	{
+		lblError.setText("");
 		// Extract the data from the text fields of view
 		// validate the input fields
 		String LNAME = this.txtLname.getText();
 		if (LNAME == null || LNAME.trim().equals("")) {
+			lblError.setText("Error: Last Name should not be empty");	
 			return;
 		}
 
 		String FNAME = this.txtFname.getText();
 		if (FNAME == null || FNAME.trim().equals("")) {
+			lblError.setText("Error: First Name should not be empty");
 			return;
 		}
 
 		LocalDate DOB = this.txtDob.getValue();
 		if (DOB == null) {
+			lblError.setText("Error: Date of Birth should not be empty");
 			return;
 		}
 
 		String EMAIL = this.txtEmail.getText();
-		if (EMAIL == null || EMAIL.trim().equals("")) {
-			return;
-		}
 
 		String PHONE = this.txtPhone.getText();
-		if (PHONE == null || PHONE.trim().equals("")) {
+		if (!PHONE.matches("\\d*")) {
+			lblError.setText("Error: Phone number should be a number");
 			return;
 		}
 		
@@ -115,11 +121,13 @@ public class SignUpController {
 
 		String USERNAME = this.txtUsername.getText();
 		if (USERNAME == null || USERNAME.trim().equals("")) {
+			lblError.setText("Error: UserName should not be empty");
 			return;
 		}
 
 		String PASSWORD = this.txtPassword.getText();
 		if (PASSWORD == null || PASSWORD.trim().equals("")) {
+			lblError.setText("Error: Password should not be empty");
 			return;
 		}
 

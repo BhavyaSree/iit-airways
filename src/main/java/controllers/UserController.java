@@ -28,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -78,6 +79,8 @@ public class UserController implements Initializable {
 	private ChoiceBox<String> Class; // choice box for travel from class
 	@FXML
 	private DatePicker Date; // set date picker
+	@FXML
+	private Label lblError;
 	@FXML
 	private TableView<FlightSearchModel> tblFlights; // Table view for flight details
 	@FXML
@@ -405,30 +408,37 @@ public class UserController implements Initializable {
 	// method to update the profile when clicked on update button in view profile
 	// screen
 	public void update() {
+		
+		lblError.setText("");
 		// Extract the data from text fields
 
 		// Validate the data and check if all the value are entered
 		String LNAME = this.txtLname.getText();
 		if (LNAME == null || LNAME.trim().equals("")) {
+			lblError.setText("Error: Last Name should not be empty");
 			return;
 		}
 
 		String FNAME = this.txtFname.getText();
 		if (FNAME == null || FNAME.trim().equals("")) {
+			lblError.setText("Error: First Name should not be empty");
 			return;
 		}
 
 		LocalDate DOB = this.txtDob.getValue();
 		if (DOB == null) {
+			lblError.setText("Error: Date of Birth should not be empty");
 			return;
 		}
 
 		String EMAIL = this.txtEmail.getText();
-		if (EMAIL == null || EMAIL.trim().equals("")) {
-			return;
-		}
 
 		String PHONE = this.txtPhone.getText();
+		if (!PHONE.matches("\\d*")) {
+			lblError.setText("Error: Phone number should be a number");
+			return;
+		}
+		
 		String ADDRESS = this.txtAddress.getText();
 		String CITY = this.txtCity.getText();
 		String STATE = this.txtState.getText();

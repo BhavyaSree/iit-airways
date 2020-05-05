@@ -21,7 +21,7 @@
             <Image url="@flight_plane_sky_color_line_61872_1920x1080.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="198.0" layoutY="35.0" text="Welcome to Illinois Tech Airways Admin Account" textAlignment="CENTER">
+      <Label layoutX="308.0" layoutY="28.0" text="Welcome to Admin Account" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -75,19 +75,19 @@
             <Button fx:id="bookBtn" layoutX="240.0" layoutY="438.0" mnemonicParsing="false" onAction="#book" prefWidth="100.0" text="BOOK" />
          </children>
       </Pane>
-      <Pane fx:id="pane1" layoutX="226.0" layoutY="96.0" prefHeight="400.0" prefWidth="545.0" visible="false">
+      <Pane fx:id="pane1" layoutX="226.0" layoutY="96.0" prefHeight="428.0" prefWidth="545.0" visible="false">
          <children>
-            <Label layoutX="26.0" layoutY="19.0" text="First Name:">
+            <Label layoutX="26.0" layoutY="19.0" text="First Name *:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="302.0" layoutY="21.0" text="Last Name:">
+            <Label layoutX="302.0" layoutY="21.0" text="Last Name *:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="63.0" text="Date of Birth:">
+            <Label layoutX="25.0" layoutY="63.0" text="Date of Birth *:">
                <font>
                   <Font size="14.0" />
                </font>
@@ -97,7 +97,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="26.0" layoutY="148.0" text="Phone number:">
+            <Label layoutX="26.0" layoutY="148.0" text="Phone number *:">
                <font>
                   <Font size="14.0" />
                </font>
@@ -129,6 +129,11 @@
             <TextField fx:id="atxtAddress" layoutX="120.0" layoutY="191.0" prefHeight="25.0" prefWidth="291.0" />
             <TextField fx:id="atxtCity" layoutX="120.0" layoutY="239.0" />
             <TextField fx:id="atxtState" layoutX="378.0" layoutY="240.0" />
+            <Label fx:id="lblErrorU" layoutX="150.0" layoutY="390.0" prefHeight="20.0" prefWidth="305.0" style="-fx-text-fill: Red;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <TextField fx:id="atxtZipcode" layoutX="120.0" layoutY="285.0" />
             <DatePicker fx:id="atxtDob" layoutX="120.0" layoutY="60.0" />
             <Button layoutX="221.0" layoutY="343.0" mnemonicParsing="false" onAction="#update" prefWidth="100.0" text="UPDATE" />
@@ -136,17 +141,22 @@
       </Pane>
       <Pane fx:id="pane2" layoutX="223.0" layoutY="97.0" prefHeight="452.0" prefWidth="545.0" visible="false">
          <children>
-            <Label layoutX="26.0" layoutY="19.0" text="First Name:">
+            <Label fx:id="lblErrorC" layoutX="300.0" layoutY="413.0" prefHeight="20.0" prefWidth="254.0" style="-fx-text-fill: Red;">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="302.0" layoutY="21.0" text="Last Name:">
+            <Label layoutX="26.0" layoutY="19.0" text="First Name *:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="25.0" layoutY="63.0" text="Date of Birth:">
+            <Label layoutX="302.0" layoutY="21.0" text="Last Name *:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="63.0" text="Date of Birth *:">
                <font>
                   <Font size="14.0" />
                </font>
@@ -156,7 +166,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="26.0" layoutY="148.0" text="Phone number:">
+            <Label layoutX="26.0" layoutY="148.0" text="Phone number *:">
                <font>
                   <Font size="14.0" />
                </font>
@@ -197,12 +207,12 @@
                </font>
             </Label>
             <ChoiceBox fx:id="UserType" layoutX="377.0" layoutY="279.0" prefWidth="150.0" />
-            <Label layoutX="26.0" layoutY="368.0" text="Password:">
+            <Label layoutX="26.0" layoutY="368.0" text="Password *:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="26.0" layoutY="323.0" text="Username:">
+            <Label layoutX="26.0" layoutY="323.0" text="Username *:">
                <font>
                   <Font size="14.0" />
                </font>
