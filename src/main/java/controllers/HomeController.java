@@ -32,7 +32,8 @@ public class HomeController {
 		Main.stage.setTitle("SignUp");
 		System.out.println("Launched SignUp Screen");
 	}
-
+	
+	
 	private void setSceneMethod(Stage primaryStage, FXMLLoader loader) throws IOException {
 		try {
 			AnchorPane root = (AnchorPane) loader.load();

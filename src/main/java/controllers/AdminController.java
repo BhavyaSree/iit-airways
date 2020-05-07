@@ -20,7 +20,7 @@ import javafx.application.Platform;
 import application.Main;
 import dao.AdminProfileUpdateDao;
 import dao.AdminHistoryDao;
-import dao.CustomerProfileUpdateDao;
+import dao.CustomerCreateDao;
 import dao.CustomerProfileViewDao;
 import dao.FlightsSearchDao;
 import dao.TicketBookDao;
@@ -179,7 +179,7 @@ public class AdminController implements Initializable {
 
 	// Setting choice box drop down values for from destination, to destination and
 	// class and user type-admin/user
-	final ObservableList<String> UserTypeL = FXCollections.observableArrayList("User", "Admin");
+	final ObservableList<String> UserTypeL = FXCollections.observableArrayList("Customer", "Admin");
 	final ObservableList<String> FromL = FXCollections.observableArrayList("Chicago");
 	final ObservableList<String> ToL = FXCollections.observableArrayList("New York", "Seattle", "Orlando",
 			"Dallas");
@@ -188,7 +188,7 @@ public class AdminController implements Initializable {
 	// Initialize the admin controller
 	public void initialize(URL location, ResourceBundle resources) {
 		pane5.setVisible(false); // set table view pane invisible
-		UserType.setValue("User"); // set user type as user by default
+		UserType.setValue("Customer"); // set user type as user by default
 		UserType.setItems(UserTypeL);
 		From.setItems(FromL);
 		From.setValue("Chicago"); // set from destination value to chicago as default
@@ -691,7 +691,7 @@ public class AdminController implements Initializable {
 		}
 
 		// Create data access instance for customer object
-		CustomerProfileUpdateDao C1 = new CustomerProfileUpdateDao();
+		CustomerCreateDao C1 = new CustomerCreateDao();
 		C1.CreateDetails(customer);
 		C1.CreateUser(user);
 

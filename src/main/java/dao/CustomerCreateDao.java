@@ -14,7 +14,7 @@ import java.sql.Statement;
 import models.CustomerProfileModel;
 import models.LoginModel;
 
-public class CustomerProfileUpdateDao extends DBConnect {
+public class CustomerCreateDao extends DBConnect {
 	// Declare DB objects
 	DBConnect connection = new DBConnect();
 
@@ -62,7 +62,7 @@ public class CustomerProfileUpdateDao extends DBConnect {
 			// Set the parameters to the query
 			statement1.setString(1, user.gettxtUsername());
 			statement1.setString(2, user.gettxtPassword());
-			System.out.println(user.getUserType());
+			//System.out.println(user.getUserType());
 			int usertype;
 			if (user.getUserType() == "Admin") { // get usertype admin/user
 				usertype = 1;

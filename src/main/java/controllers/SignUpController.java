@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
-import dao.CustomerProfileUpdateDao;
+import dao.CustomerCreateDao;
 import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -164,7 +164,7 @@ public class SignUpController {
 		
 
 		// Create data access instance for customer object
-		CustomerProfileUpdateDao C1 = new CustomerProfileUpdateDao();
+		CustomerCreateDao C1 = new CustomerCreateDao();
 		C1.CreateDetails(customer);
 
 		C1.CreateUser(user);

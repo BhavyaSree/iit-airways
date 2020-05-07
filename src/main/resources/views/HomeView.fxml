@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -32,11 +31,6 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Hyperlink layoutX="734.0" layoutY="557.0" text="Help">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Hyperlink>
       <Label layoutX="228.0" layoutY="390.0" prefHeight="30.0" prefWidth="422.0" text="“To Care For People On Life’s Journey”" wrapText="true">
          <font>
             <Font name="System Italic" size="25.0" />
